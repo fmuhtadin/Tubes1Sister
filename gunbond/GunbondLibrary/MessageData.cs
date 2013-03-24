@@ -55,6 +55,7 @@ namespace GunbondLibrary
 
         public MessageData(byte[] data)
         {
+            reservedBytes = new byte[8];
             this.pstr = Encoding.UTF8.GetString(data, 0, 11);
             for (int i = 0; i<reservedBytes.Length; i++) {
                 this.reservedBytes[i] = data[10+i];
@@ -103,7 +104,7 @@ namespace GunbondLibrary
                         Array.Copy(data, 24 + i * 54, next, 0, 50);
                         room.roomId = Encoding.UTF8.GetString(next, 0, 50);
                         next = new byte[4];
-                        Array.Copy(data, 74 + i * 54, next, 50, 4);
+                        Array.Copy(data, 74 + i * 54, next, 0, 4);
                         room.creatorId = new IPAddress(next);
                         listRoom.Add(room);
                     }

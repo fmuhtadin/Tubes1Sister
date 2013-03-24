@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace TrackerModule
 {
@@ -16,7 +17,15 @@ namespace TrackerModule
         public TrackerForm()
         {
             InitializeComponent();
-            tracker = new GunbondTracker();
+            tracker = new GunbondTracker(this);
+        }
+
+        private void InitEncoding() {
+        }
+
+        public void SetTextMessagesReceived(String s) 
+        {
+            textMessagesReceived.Invoke((MethodInvoker)(() => textMessagesReceived.Text = s));
         }
     }
 }

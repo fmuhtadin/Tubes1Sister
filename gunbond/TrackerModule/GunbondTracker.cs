@@ -60,16 +60,17 @@ namespace TrackerModule
 
         byte[] buffer = new byte[BUFFER_SIZE];
 
-        SocketPermission permission;
         Socket sListener;
+
+        TrackerForm form;
         
-        
-        public GunbondTracker()
+        public GunbondTracker(TrackerForm form1)
         {
+            form = form1;
             listRoom = new List<Room>();
             listPeerConnection = new List<ConnectionState>();
             listJoinRequest = new List<RequestJoinState>();
-
+            InitSocket();
         }
 
         public void InitSocket()
@@ -121,8 +122,11 @@ namespace TrackerModule
                 //intelligent form of object Data
                 MessageData msgReceived = new MessageData(buffer);
 
+                
+
                 //We will send this object in response the users request
                 MessageData msgToSend = new MessageData();
+                form.SetTextMessagesReceived(msgReceived.pstr + Encoding.UTF8.GetString(new byte[] {msgReceived.code}));
 
                 byte[] message;
 
@@ -395,7 +399,7 @@ namespace TrackerModule
                 //if (msgReceived.cmdCommand != Command.Logout)
                 //{
                 //    //Start listening to the message send by the user
-                //    clientSocket.BeginReceive(byteData, 0, byteData.Length, SocketFlags.None, new AsyncCallback(OnReceive), clientSocket);
+                clientSocket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, new AsyncCallback(OnReceive), clientSocket);
                 //}
 
             }

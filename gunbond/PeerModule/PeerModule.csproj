@@ -59,6 +59,12 @@
       <DependentUpon>PeerForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GunbondLibrary\GunbondLibrary.csproj">
+      <Project>{9D3EF1C7-A8C5-43CE-B356-22BA8846328E}</Project>
+      <Name>GunbondLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,6 +1,29 @@
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.exe
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.pdb
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.PeerForm.resources
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.csproj.GenerateResource.Cache
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.exe
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.pdb
+D:\Tubes1Sister-master\gunbond\PeerModule\bin\Debug\PeerModule.pdb
+D:\Tubes1Sister-master\gunbond\PeerModule\obj\Debug\ResolveAssemblyReference.cache
+D:\Tubes1Sister-master\gunbond\PeerModule\obj\Debug\GenerateResource-ResGen.read.1.tlog
+D:\Tubes1Sister-master\gunbond\PeerModule\obj\Debug\GenerateResource-ResGen.write.1.tlog
+D:\Tubes1Sister-master\gunbond\PeerModule\obj\Debug\PeerModule.pdb
+D:\Tubes1Sister-master\gunbond\PeerModule\bin\Debug\PeerModule.exe
+D:\Tubes1Sister-master\gunbond\PeerModule\obj\Debug\PeerModule.exe
+D:\Tubes1Sister-master\gunbond\PeerModule\obj\Debug\PeerModule.PeerForm.resources
+D:\Tubes1Sister-master\gunbond\PeerModule\bin\Debug\GunbondLibrary.dll
+D:\Tubes1Sister-master\gunbond\PeerModule\bin\Debug\GunbondLibrary.pdb
+D:\gunbond\PeerModule\obj\Debug\PeerModule.exe
+D:\gunbond\PeerModule\obj\Debug\PeerModule.pdb
+D:\gunbond\PeerModule\obj\Debug\ResolveAssemblyReference.cache
+D:\gunbond\PeerModule\obj\Debug\PeerModule.PeerForm.resources
+D:\gunbond\PeerModule\obj\Debug\GenerateResource-ResGen.read.1.tlog
+D:\gunbond\PeerModule\obj\Debug\GenerateResource-ResGen.write.1.tlog
+D:\gunbond\PeerModule\bin\Debug\PeerModule.exe
+D:\gunbond\PeerModule\bin\Debug\PeerModule.pdb
+D:\gunbond\PeerModule\bin\Debug\GunbondLibrary.dll
+D:\gunbond\PeerModule\bin\Debug\GunbondLibrary.pdb
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.exe
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.pdb
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\bin\Debug\GunbondLibrary.dll
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\bin\Debug\GunbondLibrary.pdb
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.csprojResolveAssemblyReference.cache
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.PeerForm.resources
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.csproj.GenerateResource.Cache
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.exe
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.pdb

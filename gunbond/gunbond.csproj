@@ -35,14 +35,41 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="GunbondLibrary\GunbondLibrary.csproj">
+      <Project>{CC7BE85C-4874-4BD1-86E5-BF62CBA60677}</Project>
+      <Name>GunbondLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="PeerModule\PeerModule.csproj">
+      <Project>{C99C4362-DAB5-4A0F-8788-9A4C4E8C8B59}</Project>
+      <Name>PeerModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="TrackerModule\TrackerModule.csproj">
+      <Project>{BC8C712B-31C0-407C-820E-983572DD9A89}</Project>
+      <Name>TrackerModule</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

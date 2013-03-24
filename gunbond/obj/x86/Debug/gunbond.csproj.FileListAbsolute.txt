@@ -1,4 +1,13 @@
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\bin\Debug\gunbond.exe
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\bin\Debug\gunbond.pdb
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\obj\x86\Debug\gunbond.exe
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\obj\x86\Debug\gunbond.pdb
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\bin\Debug\gunbond.exe
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\bin\Debug\gunbond.pdb
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\bin\Debug\GunbondLibrary.dll
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\bin\Debug\PeerModule.exe
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\bin\Debug\TrackerModule.exe
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\bin\Debug\GunbondLibrary.pdb
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\bin\Debug\PeerModule.pdb
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\bin\Debug\TrackerModule.pdb
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\obj\x86\Debug\gunbond.csprojResolveAssemblyReference.cache
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\obj\x86\Debug\gunbond.MainForm.resources
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\obj\x86\Debug\gunbond.csproj.GenerateResource.Cache
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\obj\x86\Debug\gunbond.exe
+D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\obj\x86\Debug\gunbond.pdb

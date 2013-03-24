@@ -37,7 +37,7 @@
             this.labelMessagesSent = new System.Windows.Forms.Label();
             this.textMessagesSent = new System.Windows.Forms.TextBox();
             this.labelMessagesReceived = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textMessagesReceived = new System.Windows.Forms.TextBox();
             this.labelCommandLine = new System.Windows.Forms.Label();
             this.textCommand = new System.Windows.Forms.TextBox();
             this.buttonSubmit = new System.Windows.Forms.Button();
@@ -124,15 +124,15 @@
             this.labelMessagesReceived.TabIndex = 8;
             this.labelMessagesReceived.Text = "Messages Received";
             // 
-            // textBox1
+            // textMessagesReceived
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(25, 407);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(437, 81);
-            this.textBox1.TabIndex = 9;
+            this.textMessagesReceived.BackColor = System.Drawing.Color.White;
+            this.textMessagesReceived.Location = new System.Drawing.Point(25, 407);
+            this.textMessagesReceived.Multiline = true;
+            this.textMessagesReceived.Name = "textMessagesReceived";
+            this.textMessagesReceived.ReadOnly = true;
+            this.textMessagesReceived.Size = new System.Drawing.Size(437, 81);
+            this.textMessagesReceived.TabIndex = 9;
             // 
             // labelCommandLine
             // 
@@ -167,7 +167,7 @@
             this.Controls.Add(this.buttonSubmit);
             this.Controls.Add(this.textCommand);
             this.Controls.Add(this.labelCommandLine);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textMessagesReceived);
             this.Controls.Add(this.labelMessagesReceived);
             this.Controls.Add(this.textMessagesSent);
             this.Controls.Add(this.labelMessagesSent);
@@ -195,7 +195,7 @@
         private System.Windows.Forms.Label labelMessagesSent;
         private System.Windows.Forms.TextBox textMessagesSent;
         private System.Windows.Forms.Label labelMessagesReceived;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textMessagesReceived;
         private System.Windows.Forms.Label labelCommandLine;
         private System.Windows.Forms.TextBox textCommand;
         private System.Windows.Forms.Button buttonSubmit;
