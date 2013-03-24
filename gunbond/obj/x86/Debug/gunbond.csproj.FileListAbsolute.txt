@@ -1,0 +1,4 @@
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\bin\Debug\gunbond.exe
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\bin\Debug\gunbond.pdb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\obj\x86\Debug\gunbond.exe
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\obj\x86\Debug\gunbond.pdb

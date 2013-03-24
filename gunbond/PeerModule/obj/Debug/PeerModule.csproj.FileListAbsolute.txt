@@ -1,0 +1,6 @@
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.exe
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.pdb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.PeerForm.resources
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.csproj.GenerateResource.Cache
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.exe
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.pdb

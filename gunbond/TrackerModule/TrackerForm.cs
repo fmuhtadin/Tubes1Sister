@@ -11,9 +11,12 @@ namespace TrackerModule
 {
     public partial class TrackerForm : Form
     {
+        GunbondTracker tracker;
+
         public TrackerForm()
         {
             InitializeComponent();
+            tracker = new GunbondTracker();
         }
     }
 }
