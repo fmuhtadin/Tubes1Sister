@@ -56,6 +56,7 @@ namespace GunbondLibrary
         public MessageData(byte[] data)
         {
             reservedBytes = new byte[8];
+            listRoom = new List<Room>();
             this.pstr = Encoding.UTF8.GetString(data, 0, 11);
             for (int i = 0; i<reservedBytes.Length; i++) {
                 this.reservedBytes[i] = data[10+i];
