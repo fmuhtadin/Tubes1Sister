@@ -1,6 +1,6 @@
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\GameEngine.exe
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\GameEngine.pdb
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\GameEngine.csprojResolveAssemblyReference.cache
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\GameEngine.exe
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\GameEngine.pdb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\GameEngine.csprojResolveAssemblyReference.cache
