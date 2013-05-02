@@ -2,3 +2,7 @@ D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 
 D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\GunbondLibrary\bin\Debug\GunbondLibrary.pdb
 D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\GunbondLibrary\obj\Debug\GunbondLibrary.dll
 D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\GunbondLibrary\obj\Debug\GunbondLibrary.pdb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\GunbondLibrary\bin\Debug\GunbondLibrary.dll
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\GunbondLibrary\bin\Debug\GunbondLibrary.pdb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\GunbondLibrary\obj\Debug\GunbondLibrary.dll
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\GunbondLibrary\obj\Debug\GunbondLibrary.pdb

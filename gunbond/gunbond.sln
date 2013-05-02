@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeerModule", "PeerModule\Pe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GunbondLibrary", "GunbondLibrary\GunbondLibrary.csproj", "{CC7BE85C-4874-4BD1-86E5-BF62CBA60677}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngine", "..\GameEngine\GameEngine\GameEngine.csproj", "{17F46CCA-DB00-480B-82C3-2DA073307327}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "GameEngineContent", "..\GameEngine\GameEngineContent\GameEngineContent.contentproj", "{BCA6DA3A-07C2-484E-8036-B4D80793A8DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +63,22 @@ Global
 		{CC7BE85C-4874-4BD1-86E5-BF62CBA60677}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{CC7BE85C-4874-4BD1-86E5-BF62CBA60677}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{CC7BE85C-4874-4BD1-86E5-BF62CBA60677}.Release|x86.ActiveCfg = Release|Any CPU
+		{17F46CCA-DB00-480B-82C3-2DA073307327}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{17F46CCA-DB00-480B-82C3-2DA073307327}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{17F46CCA-DB00-480B-82C3-2DA073307327}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{17F46CCA-DB00-480B-82C3-2DA073307327}.Debug|x86.ActiveCfg = Debug|x86
+		{17F46CCA-DB00-480B-82C3-2DA073307327}.Debug|x86.Build.0 = Debug|x86
+		{17F46CCA-DB00-480B-82C3-2DA073307327}.Release|Any CPU.ActiveCfg = Release|x86
+		{17F46CCA-DB00-480B-82C3-2DA073307327}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{17F46CCA-DB00-480B-82C3-2DA073307327}.Release|Mixed Platforms.Build.0 = Release|x86
+		{17F46CCA-DB00-480B-82C3-2DA073307327}.Release|x86.ActiveCfg = Release|x86
+		{17F46CCA-DB00-480B-82C3-2DA073307327}.Release|x86.Build.0 = Release|x86
+		{BCA6DA3A-07C2-484E-8036-B4D80793A8DD}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{BCA6DA3A-07C2-484E-8036-B4D80793A8DD}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{BCA6DA3A-07C2-484E-8036-B4D80793A8DD}.Debug|x86.ActiveCfg = Debug|x86
+		{BCA6DA3A-07C2-484E-8036-B4D80793A8DD}.Release|Any CPU.ActiveCfg = Release|x86
+		{BCA6DA3A-07C2-484E-8036-B4D80793A8DD}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{BCA6DA3A-07C2-484E-8036-B4D80793A8DD}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <ContentProjectGUID>{BCA6DA3A-07C2-484E-8036-B4D80793A8DD}</ContentProjectGUID>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>Reach</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngineContent\</RootDirectory>
+      <LoggerRootDirectory>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\</LoggerRootDirectory>
+      <IntermediateDirectory>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2012-10-29T16:30:30.9359178+07:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

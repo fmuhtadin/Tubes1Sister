@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
+using GameEngine;
+using System.Threading;
 
 namespace PeerModule
 {
@@ -19,6 +21,7 @@ namespace PeerModule
         private byte[] byteData = new byte[1024];
 
         GunbondPeer peer;
+        GunbondGame game;
 
         public PeerForm()
         {
@@ -83,6 +86,23 @@ namespace PeerModule
         private void buttonR_Click_1(object sender, EventArgs e)
         {
             peer.ListRoom();
+        }
+
+        private void PeerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MessageBox.Show("Closing Socket...");
+            peer.ClosePeer();
+        }
+
+        private void buttonRun_Click(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(() =>
+            {
+                game = new GunbondGame();
+                game.Run();
+            });
+            thread.Start();
+            thread.Join();
         }
     }
 }

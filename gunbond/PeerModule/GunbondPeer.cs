@@ -80,7 +80,8 @@ namespace PeerModule
                                       ProtocolType.Tcp);
 
             //Assign the any IP of the machine and listen on port number 1000
-            IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Any, 3056);
+            //IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Any, 3056);
+            IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Parse(peerForm.textPeerId.Text), 3056);
 
             //Bind and listen on the given address
             sListener.Bind(ipEndPoint);
@@ -348,6 +349,11 @@ namespace PeerModule
 
             //Send the message to the server
             trackerSocket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), null);
+        }
+
+        public void ClosePeer()
+        {
+            sListener.Close();
         }
 
     }

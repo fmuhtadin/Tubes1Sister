@@ -41,6 +41,7 @@
             this.labelCommandLine = new System.Windows.Forms.Label();
             this.textCommand = new System.Windows.Forms.TextBox();
             this.buttonSubmit = new System.Windows.Forms.Button();
+            this.buttonConnect = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelListenIP
@@ -58,8 +59,7 @@
             this.textListenIP.Location = new System.Drawing.Point(13, 40);
             this.textListenIP.Multiline = true;
             this.textListenIP.Name = "textListenIP";
-            this.textListenIP.ReadOnly = true;
-            this.textListenIP.Size = new System.Drawing.Size(193, 54);
+            this.textListenIP.Size = new System.Drawing.Size(193, 53);
             this.textListenIP.TabIndex = 1;
             // 
             // labelListPeer
@@ -159,11 +159,22 @@
             this.buttonSubmit.Text = "Submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
             // 
+            // buttonConnect
+            // 
+            this.buttonConnect.Location = new System.Drawing.Point(131, 99);
+            this.buttonConnect.Name = "buttonConnect";
+            this.buttonConnect.Size = new System.Drawing.Size(75, 23);
+            this.buttonConnect.TabIndex = 13;
+            this.buttonConnect.Text = "Connect";
+            this.buttonConnect.UseVisualStyleBackColor = true;
+            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
+            // 
             // TrackerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(530, 536);
+            this.Controls.Add(this.buttonConnect);
             this.Controls.Add(this.buttonSubmit);
             this.Controls.Add(this.textCommand);
             this.Controls.Add(this.labelCommandLine);
@@ -179,6 +190,7 @@
             this.Controls.Add(this.labelListenIP);
             this.Name = "TrackerForm";
             this.Text = "TrackerForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TrackerForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,7 +199,7 @@
         #endregion
 
         private System.Windows.Forms.Label labelListenIP;
-        private System.Windows.Forms.TextBox textListenIP;
+        public System.Windows.Forms.TextBox textListenIP;
         private System.Windows.Forms.Label labelListPeer;
         private System.Windows.Forms.ListBox lbListPeer;
         private System.Windows.Forms.Label labelListRoom;
@@ -199,5 +211,6 @@
         private System.Windows.Forms.Label labelCommandLine;
         private System.Windows.Forms.TextBox textCommand;
         private System.Windows.Forms.Button buttonSubmit;
+        private System.Windows.Forms.Button buttonConnect;
     }
 }

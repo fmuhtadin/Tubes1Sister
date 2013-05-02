@@ -44,6 +44,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textPlayerNum = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.buttonRun = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -186,11 +187,22 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "Max Players";
             // 
+            // buttonRun
+            // 
+            this.buttonRun.Location = new System.Drawing.Point(24, 483);
+            this.buttonRun.Name = "buttonRun";
+            this.buttonRun.Size = new System.Drawing.Size(75, 23);
+            this.buttonRun.TabIndex = 17;
+            this.buttonRun.Text = "Run Game";
+            this.buttonRun.UseVisualStyleBackColor = true;
+            this.buttonRun.Click += new System.EventHandler(this.buttonRun_Click);
+            // 
             // PeerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(368, 518);
+            this.Controls.Add(this.buttonRun);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textPlayerNum);
             this.Controls.Add(this.label5);
@@ -209,6 +221,7 @@
             this.Controls.Add(this.label1);
             this.Name = "PeerForm";
             this.Text = "Peer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PeerForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,7 +236,7 @@
         private System.Windows.Forms.Button buttonJ;
         private System.Windows.Forms.Button connect;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textPeerId;
+        public System.Windows.Forms.TextBox textPeerId;
         private System.Windows.Forms.ListBox lbRoom;
         private System.Windows.Forms.TextBox textMessages;
         private System.Windows.Forms.Label label4;
@@ -232,5 +245,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textPlayerNum;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button buttonRun;
     }
 }

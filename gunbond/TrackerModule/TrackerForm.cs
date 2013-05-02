@@ -27,5 +27,16 @@ namespace TrackerModule
         {
             textMessagesReceived.Invoke((MethodInvoker)(() => textMessagesReceived.Text = s));
         }
+
+        private void buttonConnect_Click(object sender, EventArgs e)
+        {
+            tracker.InitSocket();
+        }
+
+        private void TrackerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MessageBox.Show("Closing Socket...");
+            tracker.CloseTracker();
+        }
     }
 }

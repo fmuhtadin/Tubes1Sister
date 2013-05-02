@@ -70,7 +70,7 @@ namespace TrackerModule
             listRoom = new List<Room>();
             listPeerConnection = new List<ConnectionState>();
             listJoinRequest = new List<RequestJoinState>();
-            InitSocket();
+            //InitSocket();
         }
 
         public void InitSocket()
@@ -81,7 +81,8 @@ namespace TrackerModule
                                       ProtocolType.Tcp);
 
             //Assign the any IP of the machine and listen on port number 1000
-            IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Any, PORT_NUMBER);
+            //IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Any, PORT_NUMBER);
+            IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Parse(form.textListenIP.Text), 3056);
 
             //Bind and listen on the given address
             sListener.Bind(ipEndPoint);
@@ -304,10 +305,6 @@ namespace TrackerModule
                             }
                         }
 
-                        
-                       
-
-
                         break;
 
                     case 252:
@@ -420,6 +417,11 @@ namespace TrackerModule
             {
                 MessageBox.Show(ex.Message, "GUNBOND TRACKER ONSEND ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public void CloseTracker()
+        {
+            sListener.Close();
         }
         
 
