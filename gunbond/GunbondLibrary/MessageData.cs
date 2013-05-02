@@ -36,10 +36,12 @@ namespace GunbondLibrary
         public int roomCount;
         public String roomId;
         public List<Room> listRoom;
+        public int ipCount;
+        public List<IPAddress> listIPAddress;
 
         public MessageData()
         {
-            pstr = null;
+            pstr = "GunbondGame";
             reservedBytes = new byte[8];
             for (int i = 0; i < reservedBytes.Length; i++)
             {
@@ -51,12 +53,15 @@ namespace GunbondLibrary
             roomCount = 0;
             roomId = null;
             listRoom = new List<Room>();
+            ipCount = 0;
+            listIPAddress = new List<IPAddress>();
         }
 
         public MessageData(byte[] data)
         {
             reservedBytes = new byte[8];
             listRoom = new List<Room>();
+            listIPAddress = new List<IPAddress>();
             this.pstr = Encoding.UTF8.GetString(data, 0, 11);
             for (int i = 0; i<reservedBytes.Length; i++) {
                 this.reservedBytes[i] = data[10+i];
@@ -135,6 +140,17 @@ namespace GunbondLibrary
                     Array.Copy(data, 20, next, 0, 4);
                     peerId = new IPAddress(next);
                     break;
+                case 100:
+                    //list IP Address connected to superpeer
+                    next = new byte[4];
+                    this.ipCount = BitConverter.ToInt32(data, 20);
+                    for (int i = 0; i < ipCount; i++)
+                    {
+                        Array.Copy(data, 24 + i * 4, next, 0, 4);
+                        IPAddress tmpIP = new IPAddress(next);
+                        listIPAddress.Add(tmpIP);
+                    }
+                    break;
             }
 
         }
@@ -192,6 +208,15 @@ namespace GunbondLibrary
                     break;
                 case 235:
                     retByte.AddRange(peerId.GetAddressBytes());
+                    break;
+                case 230:
+                    break;
+                case 100:
+                    retByte.AddRange(BitConverter.GetBytes(ipCount));
+                    for (int i = 0; i < listIPAddress.Count; i++)
+                    {
+                        retByte.AddRange(listIPAddress[i].GetAddressBytes());
+                    }
                     break;
             }
             return retByte.ToArray();

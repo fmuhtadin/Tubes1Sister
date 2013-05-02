@@ -152,6 +152,7 @@ namespace TrackerModule
                         message = msgToSend.ToByte();
                         clientSocket.BeginSend(message, 0, message.Length, SocketFlags.None,
                                         new AsyncCallback(OnSend), clientSocket);
+                        UpdateForm();
 
                         break;
 
@@ -187,6 +188,7 @@ namespace TrackerModule
                             message = msgToSend.ToByte();
                             clientSocket.BeginSend(message, 0, message.Length, SocketFlags.None,
                                         new AsyncCallback(OnSend), clientSocket);
+                            UpdateForm();
                         }
                         else
                         {
@@ -244,7 +246,7 @@ namespace TrackerModule
                                 if (requester.Equals((cs.socket.RemoteEndPoint as IPEndPoint).Address))
                                 {
                                     cs.socket.BeginSend(message, 0, message.Length, SocketFlags.None,
-                                            new AsyncCallback(OnSend), clientSocket);
+                                            new AsyncCallback(OnSend), cs.socket);
                                 }
                             }
                         }
@@ -276,7 +278,7 @@ namespace TrackerModule
                                 if (requester1.Equals((cs.socket.RemoteEndPoint as IPEndPoint).Address))
                                 {
                                     cs.socket.BeginSend(message, 0, message.Length, SocketFlags.None,
-                                            new AsyncCallback(OnSend), clientSocket);
+                                            new AsyncCallback(OnSend), cs.socket);
                                 }
                             }
                         }
@@ -293,14 +295,14 @@ namespace TrackerModule
                         {
                             foreach (Room room in listRoom)
                             {
-                                if (room.creatorId.Equals((cs.socket.RemoteEndPoint as IPEndPoint).Address))
+                                if (room.creatorId.Equals((cs.socket.RemoteEndPoint as IPEndPoint).Address) && room.roomId.Equals(msgReceived.roomId))
                                 {
                                     //Add pending request
                                     RequestJoinState rjs = new RequestJoinState(room.creatorId,(clientSocket.RemoteEndPoint as IPEndPoint).Address);
                                     listJoinRequest.Add(rjs);
 
                                     cs.socket.BeginSend(message, 0, message.Length, SocketFlags.None,
-                                        new AsyncCallback(OnSend), clientSocket);
+                                        new AsyncCallback(OnSend), cs.socket);
                                 }
                             }
                         }
@@ -417,6 +419,12 @@ namespace TrackerModule
             {
                 MessageBox.Show(ex.Message, "GUNBOND TRACKER ONSEND ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public void UpdateForm()
+        {
+            form.SetRoomListBox(listRoom);
+            form.SetPeerListBox(listPeerConnection);
         }
 
         public void CloseTracker()

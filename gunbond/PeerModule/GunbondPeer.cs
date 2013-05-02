@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using GunbondLibrary;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace PeerModule
 {
@@ -40,6 +41,11 @@ namespace PeerModule
         public IPAddress ipTracker;
         public IPAddress localIP;
         public List<IPAddress> listPendingRequest;
+        public List<Room> listRoom;
+        public int team;
+        public List<IPAddress> listRoomPeers;
+        public List<IPAddress> listTeam1Peers;
+        public List<IPAddress> listTeam2Peers;
 
         private PeerForm peerForm;
         private byte[] buffer = new byte[1024];
@@ -48,6 +54,7 @@ namespace PeerModule
         private ConnectionState connectedCreatorPeer;
         PeerOptions options;
         private int lastCommandCode;
+        private int availablePort;
 
         public GunbondPeer(PeerForm newPeerForm)
         {
@@ -56,17 +63,30 @@ namespace PeerModule
             isConnectedToTracker = false;
             options = new PeerOptions();
             ipTracker = null;
+            roomIdHeld = null;
             listPendingRequest = new List<IPAddress>();
+            listRoom = new List<Room>();
+            team = 0;
+            listRoomPeers = new List<IPAddress>();
+            listTeam1Peers = new List<IPAddress>();
+            listTeam2Peers = new List<IPAddress>();
+            availablePort = 3055;
         }
 
         public void InitSocket(String serverIPtext)
         {
             clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            //sListener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            IPEndPoint ipLocalEndPoint = new IPEndPoint(IPAddress.Parse(peerForm.textPeerId.Text), availablePort);
+            //sListener.Bind(ipLocalEndPoint);
+            //clientSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+            clientSocket.Bind(ipLocalEndPoint);
+            availablePort++;
 
             IPAddress ipAddress = IPAddress.Parse(serverIPtext);
             //Server is listening on port 1000
             IPEndPoint ipEndPoint = new IPEndPoint(ipAddress, 3056);
-
+            
             //Connect to the server
             clientSocket.BeginConnect(ipEndPoint, new AsyncCallback(OnConnect), null);
         }
@@ -75,13 +95,13 @@ namespace PeerModule
         {
             isConnectedToTracker = true;
             //We are using TCP sockets
-            sListener = new Socket(AddressFamily.InterNetwork,
-                                      SocketType.Stream,
-                                      ProtocolType.Tcp);
+            sListener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             //Assign the any IP of the machine and listen on port number 1000
             //IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Any, 3056);
-            IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Parse(peerForm.textPeerId.Text), 3056);
+            IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Parse(peerForm.textPeerId.Text), availablePort);
+            availablePort++;
+            //sListener.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 
             //Bind and listen on the given address
             sListener.Bind(ipEndPoint);
@@ -115,21 +135,29 @@ namespace PeerModule
         {
             try
             {
-                clientSocket.EndConnect(ar);
-                ipTracker = (clientSocket.RemoteEndPoint as IPEndPoint).Address;
-                trackerSocket = clientSocket;
+                if (!isConnectedToTracker)
+                {
+                    clientSocket.EndConnect(ar);
+                    ipTracker = (clientSocket.RemoteEndPoint as IPEndPoint).Address;
+                    trackerSocket = clientSocket;
 
-                //We are connected so we login into the server
-                MessageData msgToSend = new MessageData();
-                msgToSend.pstr = "GunbondGame";
-                byte[] reserved = new byte[] {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
-                msgToSend.reservedBytes = reserved;
-                msgToSend.code = 135;
+                    //We are connected so we login into the server
+                    MessageData msgToSend = new MessageData();
+                    msgToSend.pstr = "GunbondGame";
+                    byte[] reserved = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                    msgToSend.reservedBytes = reserved;
+                    msgToSend.code = 135;
+                    lastCommandCode = 135;
 
-                byte[] message = msgToSend.ToByte();
+                    byte[] message = msgToSend.ToByte();
 
-                //Send the message to the server
-                clientSocket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), null);
+                    //Send the message to the server
+                    clientSocket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), clientSocket);
+                }
+                else
+                {
+                    Thread.Sleep(100);
+                }
             }
             catch (Exception ex)
             {
@@ -141,13 +169,9 @@ namespace PeerModule
         {
             try
             {
-                clientSocket.EndSend(ar);
-                clientSocket.BeginReceive(buffer,
-                                          0,
-                                          buffer.Length,
-                                          SocketFlags.None,
-                                          new AsyncCallback(OnReceive),
-                                          null);
+                Socket currSocket = (Socket)ar.AsyncState;
+                currSocket.EndSend(ar);
+                currSocket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, new AsyncCallback(OnReceive), currSocket);
             }
             catch (Exception ex)
             {
@@ -159,7 +183,8 @@ namespace PeerModule
         {
             try
             {
-                clientSocket.EndReceive(ar);
+                Socket currSocket = (Socket)ar.AsyncState;
+                currSocket.EndReceive(ar);
 
                 MessageData msgReceived = new MessageData(buffer);
 
@@ -172,9 +197,22 @@ namespace PeerModule
                 switch (msgReceived.code)
                 {
                     case 135:
-                        peerForm.setMessagesText(msgReceived.pstr+Encoding.UTF8.GetString( new byte[] {msgReceived.code}));
-                        peerForm.setPeerIdText(msgReceived.peerId.ToString());
-                        localIP = msgReceived.peerId;
+                        lastCommandCode = 135;
+                        if (!isConnectedToTracker)
+                        {
+                            peerForm.setMessagesText(msgReceived.pstr + Encoding.UTF8.GetString(new byte[] { msgReceived.code }));
+                            peerForm.setPeerIdText(msgReceived.peerId.ToString());
+                            localIP = msgReceived.peerId;
+                        }
+                        else
+                        {
+                            if (lastCommandCode != 135)
+                            {
+                                msgToSend.code = 135;
+                                message = msgToSend.ToByte();
+                                currSocket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), currSocket);
+                            }
+                        }
                         break;
 
                     case 182:
@@ -192,8 +230,10 @@ namespace PeerModule
                     case 200:
                         //room
                         List<String> listroomreceived = new List<string>();
+                        listRoom.Clear();
                         for (int i = 0; i < msgReceived.listRoom.Count; i++)
                         {
+                            listRoom.Add(msgReceived.listRoom[i]);
                             listroomreceived.Add(msgReceived.listRoom[i].roomId);
                         }
                         peerForm.setRoomListBox(listroomreceived);
@@ -204,7 +244,62 @@ namespace PeerModule
                         switch (lastCommandCode)
                         {
                             case 255:
+                                //Success Create Room
+                                listRoomPeers.Add(localIP);
+                                peerForm.UpdateCreatorPeerButton();
+                                UpdateForm();
                                 peerForm.setMessagesText("Create Room Successful");
+                                break;
+                            case 253:
+                                //Success Join Room
+                                if ((currSocket.RemoteEndPoint as IPEndPoint).Equals(trackerSocket.RemoteEndPoint as IPEndPoint))
+                                {
+                                    //from tracker
+                                    lastCommandCode = 253;
+                                    msgToSend.pstr = "GunbondGame";
+                                    byte[] reserved = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                                    msgToSend.reservedBytes = reserved;
+                                    msgToSend.code = 253;
+                                    msgToSend.peerId = localIP;
+                                    msgToSend.roomId = peerForm.GetSelectedRoomId();
+                                    message = msgToSend.ToByte();
+
+                                    IPAddress destCreatorPeer = null;
+                                    foreach (Room room in listRoom)
+                                    {
+                                        if (room.roomId.Equals(peerForm.GetSelectedRoomId())) 
+                                        {
+                                            destCreatorPeer = room.creatorId;
+                                        }
+                                    }
+
+                                    Socket clSock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+                                    //Server is listening on port 1000
+                                    IPEndPoint ipEndPoint = new IPEndPoint(destCreatorPeer, 3056);
+                                    IPEndPoint ipLocalEndPoint = new IPEndPoint(localIP, availablePort);
+                                    availablePort++;
+                                    //clSock.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+                                    clSock.Bind(ipLocalEndPoint);
+
+                                    //Connect to the server
+                                    clSock.BeginConnect(ipEndPoint, new AsyncCallback(OnConnect), null);
+
+                                    //Send the message to the server
+                                    clSock.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), clSock);
+                                }
+                                else
+                                {
+                                    //from superpeer
+                                    ConnectionState peerConn = new ConnectionState(currSocket);
+                                    listPeerConnected.Add(peerConn);
+                                    connectedCreatorPeer = peerConn;
+                                    UpdateForm();
+                                    peerForm.setMessagesText("Join Room Successful");
+                                    msgToSend.code = 101;
+                                    message = msgToSend.ToByte();
+                                    currSocket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), currSocket);
+                                }
                                 break;
                         }
                         break;
@@ -214,46 +309,70 @@ namespace PeerModule
                         switch (lastCommandCode)
                         {
                             case 255:
-                                roomIdHeld = null;
                                 peerForm.setMessagesText("Create Room UNsuccessful");
+                                break;
+                            case 253:
+                                peerForm.setMessagesText("Join Room UNsuccessful");
                                 break;
                         }
                         break;
 
                     case 253:
                         //join
-                        if (ipTracker.Equals((clientSocket.RemoteEndPoint as IPEndPoint).Address))
+                        if (ipTracker.Equals((currSocket.RemoteEndPoint as IPEndPoint).Address))
                         {
+                            //from tracker
                             if (listPeerConnected.Count < options.MAX_PEER)
                             {
-                                listPendingRequest.Add(msgReceived.peerId);
-                                msgToSend.code = 127;
-                                message = msgToSend.ToByte();
-                                clientSocket.BeginSend(message, 0, message.Length, SocketFlags.None,
-                                            new AsyncCallback(OnSend), clientSocket);
+                                bool isIPAlreadyConnected = false;
+                                for (int i = 0; i < listPeerConnected.Count; i++)
+                                {
+                                    if ((listPeerConnected[i].socket.RemoteEndPoint as IPEndPoint).Equals((currSocket.RemoteEndPoint as IPEndPoint).Address)) 
+                                    {
+                                        msgToSend.code = 128;
+                                        message = msgToSend.ToByte();
+                                        currSocket.BeginSend(message, 0, message.Length, SocketFlags.None,
+                                                    new AsyncCallback(OnSend), currSocket);
+                                        isIPAlreadyConnected = true;
+                                        break;
+                                    }
+                                }
+                                if (!isIPAlreadyConnected)
+                                {
+                                    listPendingRequest.Add(msgReceived.peerId);
+                                    msgToSend.code = 127;
+                                    message = msgToSend.ToByte();
+                                    currSocket.BeginSend(message, 0, message.Length, SocketFlags.None,
+                                                new AsyncCallback(OnSend), currSocket);
+                                }
                             }
                             else
                             {
                                 msgToSend.code = 128;
                                 message = msgToSend.ToByte();
-                                clientSocket.BeginSend(message, 0, message.Length, SocketFlags.None,
-                                            new AsyncCallback(OnSend), clientSocket);
+                                currSocket.BeginSend(message, 0, message.Length, SocketFlags.None,
+                                            new AsyncCallback(OnSend), currSocket);
                             }
                         }
                         else
                         {
+                            //from peer
                             int q = 0;
                             bool valid = false;
                             foreach (IPAddress ip in listPendingRequest)
                             {
-                                if (ip.Equals((clientSocket.RemoteEndPoint as IPEndPoint).Address))
+                                if (ip.Equals((currSocket.RemoteEndPoint as IPEndPoint).Address))
                                 {
                                     valid = true;
-                                    listPendingRequest.RemoveAt(q);
+                                    listRoomPeers.Add(ip);
+                                    listPeerConnected.Add(new ConnectionState(currSocket));
                                     msgToSend.code = 127;
                                     message = msgToSend.ToByte();
-                                    clientSocket.BeginSend(message, 0, message.Length, SocketFlags.None,
-                                                new AsyncCallback(OnSend), clientSocket);
+                                    currSocket.BeginSend(message, 0, message.Length, SocketFlags.None,
+                                                new AsyncCallback(OnSend), currSocket);
+                                    listPendingRequest.RemoveAt(q);
+                                    
+                                    break;
                                 }
                                 q++;
                             }
@@ -261,8 +380,8 @@ namespace PeerModule
                             {
                                 msgToSend.code = 128;
                                 message = msgToSend.ToByte();
-                                clientSocket.BeginSend(message, 0, message.Length, SocketFlags.None,
-                                            new AsyncCallback(OnSend), clientSocket);
+                                currSocket.BeginSend(message, 0, message.Length, SocketFlags.None,
+                                            new AsyncCallback(OnSend), currSocket);
                             }
                         }
 
@@ -276,6 +395,20 @@ namespace PeerModule
                         //quit
                         break;
 
+                    case 100:
+                        listRoomPeers = msgReceived.listIPAddress;
+                        UpdateForm();
+                        break;
+
+                    case 101:
+                        msgToSend.code = 100;
+                        msgToSend.ipCount = listRoomPeers.Count;
+                        msgToSend.listIPAddress = listRoomPeers;
+                        message = msgToSend.ToByte();
+                        currSocket.BeginSend(message, 0, message.Length, SocketFlags.None,
+                                    new AsyncCallback(OnSend), currSocket);
+                        UpdateForm();
+                        break;
 
                     //case Command.Logout:
                     //    lstChatters.Items.Remove(msgReceived.strName);
@@ -292,7 +425,7 @@ namespace PeerModule
                 }
 
 
-                buffer = new byte[1024];
+                //buffer = new byte[1024];
 
                 if (!isConnectedToTracker)
                 {
@@ -301,12 +434,7 @@ namespace PeerModule
                 else
                 {
 
-                    clientSocket.BeginReceive(buffer,
-                                              0,
-                                              buffer.Length,
-                                              SocketFlags.None,
-                                              new AsyncCallback(OnReceive),
-                                              null);
+                    currSocket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, new AsyncCallback(OnReceive), currSocket);
                 }
             }
             catch (ObjectDisposedException)
@@ -332,7 +460,7 @@ namespace PeerModule
             byte[] message = msgToSend.ToByte();
 
             //Send the message to the server
-            trackerSocket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), null);
+            trackerSocket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), trackerSocket);
         }
 
         public void ListRoom()
@@ -348,12 +476,34 @@ namespace PeerModule
             byte[] message = msgToSend.ToByte();
 
             //Send the message to the server
-            trackerSocket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), null);
+            trackerSocket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), trackerSocket);
         }
 
         public void ClosePeer()
         {
             sListener.Close();
+        }
+
+        public void Join()
+        {
+            //MessageBox.Show(peerForm.lbRoom.Items[peerForm.lbRoom.SelectedIndex].ToString());
+            lastCommandCode = 253;
+            MessageData msgToSend = new MessageData();
+            msgToSend.pstr = "GunbondGame";
+            byte[] reserved = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+            msgToSend.reservedBytes = reserved;
+            msgToSend.code = 253;
+            msgToSend.peerId = localIP;
+            msgToSend.roomId = peerForm.GetSelectedRoomId();
+            byte[] message = msgToSend.ToByte();
+
+            //Send the message to the server
+            trackerSocket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), trackerSocket);
+        }
+
+        public void UpdateForm()
+        {
+            peerForm.setRoomPeersListBox(listRoomPeers);
         }
 
     }

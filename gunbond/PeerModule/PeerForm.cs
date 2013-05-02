@@ -68,6 +68,13 @@ namespace PeerModule
                 lbRoom.Invoke((MethodInvoker) (() => lbRoom.Items.Add(s)));
         }
 
+        public void setRoomPeersListBox(List<IPAddress> list)
+        {
+            lbRoomPeers.Invoke((MethodInvoker)(() => lbRoomPeers.Items.Clear()));
+            foreach (IPAddress s in list)
+                lbRoomPeers.Invoke((MethodInvoker)(() => lbRoomPeers.Items.Add(s.ToString())));
+        }
+
         public void setPeerIdText(String S)
         {
             textPeerId.Invoke((MethodInvoker)(() => textPeerId.Text = S));
@@ -103,6 +110,24 @@ namespace PeerModule
             });
             thread.Start();
             thread.Join();
+        }
+
+        private void buttonJ_Click_1(object sender, EventArgs e)
+        {
+            peer.Join();
+        }
+
+        public String GetSelectedRoomId()
+        {
+            String ret = "";
+            lbRoom.Invoke((MethodInvoker)(() => ret = lbRoom.Items[lbRoom.SelectedIndex].ToString()));
+            return ret;
+        }
+
+        public void UpdateCreatorPeerButton()
+        {
+            createRoom.Invoke((MethodInvoker)(() => createRoom.Enabled = false));
+            buttonJ.Invoke((MethodInvoker)(() => buttonJ.Enabled = false));
         }
     }
 }

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using GunbondLibrary;
+using System.Net;
 
 namespace TrackerModule
 {
@@ -26,6 +28,20 @@ namespace TrackerModule
         public void SetTextMessagesReceived(String s) 
         {
             textMessagesReceived.Invoke((MethodInvoker)(() => textMessagesReceived.Text = s));
+        }
+
+        public void SetRoomListBox(List<Room> list) 
+        {
+            lbListRoom.Invoke((MethodInvoker)(() => lbListRoom.Items.Clear()));
+            foreach (Room s in list)
+                lbListRoom.Invoke((MethodInvoker)(() => lbListRoom.Items.Add(s.roomId)));
+        }
+
+        public void SetPeerListBox(List<ConnectionState> list)
+        {
+            lbListPeer.Invoke((MethodInvoker)(() => lbListPeer.Items.Clear()));
+            foreach (ConnectionState s in list)
+                lbListPeer.Invoke((MethodInvoker)(() => lbListPeer.Items.Add((s.socket.RemoteEndPoint as IPEndPoint).Address).ToString()));
         }
 
         private void buttonConnect_Click(object sender, EventArgs e)

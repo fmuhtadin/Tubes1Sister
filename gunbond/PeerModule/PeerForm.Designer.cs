@@ -45,6 +45,12 @@
             this.textPlayerNum = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.buttonRun = new System.Windows.Forms.Button();
+            this.lbRoomPeers = new System.Windows.Forms.ListBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lbTeam1 = new System.Windows.Forms.ListBox();
+            this.lbTeam2 = new System.Windows.Forms.ListBox();
+            this.buttonJoinTeam1 = new System.Windows.Forms.Button();
+            this.buttonJoinTeam2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -91,6 +97,7 @@
             this.buttonJ.TabIndex = 6;
             this.buttonJ.Text = "Join";
             this.buttonJ.UseVisualStyleBackColor = true;
+            this.buttonJ.Click += new System.EventHandler(this.buttonJ_Click_1);
             // 
             // connect
             // 
@@ -197,11 +204,68 @@
             this.buttonRun.UseVisualStyleBackColor = true;
             this.buttonRun.Click += new System.EventHandler(this.buttonRun_Click);
             // 
+            // lbRoomPeers
+            // 
+            this.lbRoomPeers.FormattingEnabled = true;
+            this.lbRoomPeers.Location = new System.Drawing.Point(400, 45);
+            this.lbRoomPeers.Name = "lbRoomPeers";
+            this.lbRoomPeers.Size = new System.Drawing.Size(327, 147);
+            this.lbRoomPeers.TabIndex = 18;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(400, 20);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 13);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Room Peers";
+            // 
+            // lbTeam1
+            // 
+            this.lbTeam1.FormattingEnabled = true;
+            this.lbTeam1.Location = new System.Drawing.Point(397, 247);
+            this.lbTeam1.Name = "lbTeam1";
+            this.lbTeam1.Size = new System.Drawing.Size(324, 95);
+            this.lbTeam1.TabIndex = 20;
+            // 
+            // lbTeam2
+            // 
+            this.lbTeam2.FormattingEnabled = true;
+            this.lbTeam2.Location = new System.Drawing.Point(397, 395);
+            this.lbTeam2.Name = "lbTeam2";
+            this.lbTeam2.Size = new System.Drawing.Size(324, 95);
+            this.lbTeam2.TabIndex = 21;
+            // 
+            // buttonJoinTeam1
+            // 
+            this.buttonJoinTeam1.Location = new System.Drawing.Point(435, 199);
+            this.buttonJoinTeam1.Name = "buttonJoinTeam1";
+            this.buttonJoinTeam1.Size = new System.Drawing.Size(75, 23);
+            this.buttonJoinTeam1.TabIndex = 22;
+            this.buttonJoinTeam1.Text = "Join Team 1";
+            this.buttonJoinTeam1.UseVisualStyleBackColor = true;
+            // 
+            // buttonJoinTeam2
+            // 
+            this.buttonJoinTeam2.Location = new System.Drawing.Point(601, 198);
+            this.buttonJoinTeam2.Name = "buttonJoinTeam2";
+            this.buttonJoinTeam2.Size = new System.Drawing.Size(75, 23);
+            this.buttonJoinTeam2.TabIndex = 23;
+            this.buttonJoinTeam2.Text = "Join Team 2";
+            this.buttonJoinTeam2.UseVisualStyleBackColor = true;
+            // 
             // PeerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 518);
+            this.ClientSize = new System.Drawing.Size(761, 518);
+            this.Controls.Add(this.buttonJoinTeam2);
+            this.Controls.Add(this.buttonJoinTeam1);
+            this.Controls.Add(this.lbTeam2);
+            this.Controls.Add(this.lbTeam1);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lbRoomPeers);
             this.Controls.Add(this.buttonRun);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textPlayerNum);
@@ -233,18 +297,24 @@
         private System.Windows.Forms.TextBox textIPServer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonR;
-        private System.Windows.Forms.Button buttonJ;
+        public System.Windows.Forms.Button buttonJ;
         private System.Windows.Forms.Button connect;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.TextBox textPeerId;
-        private System.Windows.Forms.ListBox lbRoom;
+        public System.Windows.Forms.ListBox lbRoom;
         private System.Windows.Forms.TextBox textMessages;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button createRoom;
+        public System.Windows.Forms.Button createRoom;
         private System.Windows.Forms.TextBox roomName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textPlayerNum;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button buttonRun;
+        private System.Windows.Forms.ListBox lbRoomPeers;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ListBox lbTeam1;
+        private System.Windows.Forms.ListBox lbTeam2;
+        private System.Windows.Forms.Button buttonJoinTeam1;
+        private System.Windows.Forms.Button buttonJoinTeam2;
     }
 }
