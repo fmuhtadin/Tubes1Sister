@@ -206,12 +206,10 @@ namespace PeerModule
                         }
                         else
                         {
-                            if (lastCommandCode != 135)
-                            {
-                                msgToSend.code = 135;
-                                message = msgToSend.ToByte();
-                                currSocket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), currSocket);
-                            }
+                            listPeerConnected.Add(new ConnectionState(currSocket));
+                            msgToSend.code = 127;
+                            message = msgToSend.ToByte();
+                            currSocket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), currSocket);
                         }
                         break;
 
@@ -249,6 +247,7 @@ namespace PeerModule
                                 peerForm.DisableRoomButton();
                                 UpdateForm();
                                 peerForm.setMessagesText("Create Room Successful");
+                                peerForm.EnableStartGame();
                                 break;
                             case 253:
                                 //Success Join Room
@@ -301,6 +300,11 @@ namespace PeerModule
                                     message = msgToSend.ToByte();
                                     currSocket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), currSocket);
                                 }
+                                break;
+                            case 135:
+                                msgToSend.code = 115;
+                                message = msgToSend.ToByte();
+                                connectedCreatorPeer.socket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), connectedCreatorPeer.socket);
                                 break;
                         }
                         break;
@@ -447,6 +451,123 @@ namespace PeerModule
                                         new AsyncCallback(OnSend), currSocket);
                         }
                         break;
+                    case 110:
+                        int number = GetSelfPositionNumber();
+                        if (number > 10 && number < 20)
+                        {
+                            switch (number % 10)
+                            {
+                                case 1:
+                                    if (listTeam1Peers.Count>1)
+                                        HandshakePeer(listTeam1Peers[1]);
+                                    if (listTeam1Peers.Count > 2)
+                                        HandshakePeer(listTeam1Peers[2]);
+                                    if (listTeam2Peers.Count > 0)
+                                        HandshakePeer(listTeam2Peers[0]);
+                                    break;
+                                case 2:
+                                    if (listTeam1Peers.Count > 0)
+                                        HandshakePeer(listTeam1Peers[0]);
+                                    if (listTeam1Peers.Count > 3)
+                                        HandshakePeer(listTeam1Peers[3]);
+                                    if (listTeam2Peers.Count > 1)
+                                        HandshakePeer(listTeam2Peers[1]);
+                                    break;
+                                case 3:
+                                    if (listTeam1Peers.Count > 0)
+                                        HandshakePeer(listTeam1Peers[0]);
+                                    if (listTeam1Peers.Count > 3)
+                                        HandshakePeer(listTeam1Peers[3]);
+                                    if (listTeam2Peers.Count > 2)
+                                        HandshakePeer(listTeam2Peers[2]);
+                                    break;
+                                case 4:
+                                    if (listTeam1Peers.Count > 1)
+                                        HandshakePeer(listTeam1Peers[1]);
+                                    if (listTeam1Peers.Count > 2)
+                                        HandshakePeer(listTeam1Peers[2]);
+                                    if (listTeam2Peers.Count > 3)
+                                        HandshakePeer(listTeam2Peers[3]);
+                                    break;
+                            }
+                        }
+                        else if (number > 20)
+                        {
+                            switch (number % 10)
+                            {
+                                case 1:
+                                    if (listTeam2Peers.Count > 1)
+                                        HandshakePeer(listTeam2Peers[1]);
+                                    if (listTeam2Peers.Count > 2)
+                                        HandshakePeer(listTeam2Peers[2]);
+                                    if (listTeam1Peers.Count > 0)
+                                        HandshakePeer(listTeam1Peers[0]);
+                                    break;
+                                case 2:
+                                    if (listTeam2Peers.Count > 0)
+                                        HandshakePeer(listTeam2Peers[0]);
+                                    if (listTeam2Peers.Count > 3)
+                                        HandshakePeer(listTeam2Peers[3]);
+                                    if (listTeam1Peers.Count > 1)
+                                        HandshakePeer(listTeam1Peers[1]);
+                                    break;
+                                case 3:
+                                    if (listTeam2Peers.Count > 0)
+                                        HandshakePeer(listTeam2Peers[0]);
+                                    if (listTeam2Peers.Count > 3)
+                                        HandshakePeer(listTeam2Peers[3]);
+                                    if (listTeam1Peers.Count > 2)
+                                        HandshakePeer(listTeam1Peers[2]);
+                                    break;
+                                case 4:
+                                    if (listTeam2Peers.Count > 1)
+                                        HandshakePeer(listTeam2Peers[1]);
+                                    if (listTeam2Peers.Count > 2)
+                                        HandshakePeer(listTeam2Peers[2]);
+                                    if (listTeam1Peers.Count > 3)
+                                        HandshakePeer(listTeam1Peers[3]);
+                                    break;
+                            }
+                        }
+                        msgToSend.code = 115;
+                        message = msgToSend.ToByte();
+                        connectedCreatorPeer.socket.BeginSend(message, 0, message.Length, SocketFlags.None,
+                                        new AsyncCallback(OnSend), connectedCreatorPeer.socket);
+                        break;
+                    case 115:
+                        for (int i = 0; i < listPeerConnected.Count; i++)
+                        {
+                            if ((currSocket.RemoteEndPoint as IPEndPoint).Address.Equals((listPeerConnected[i].socket.RemoteEndPoint as IPEndPoint).Address))
+                            {
+                                if (i == listPeerConnected.Count - 1)
+                                {
+                                    InitSuperPeerHyperCube();
+                                }
+                                else
+                                {
+                                    SendInitHyperCubeCommand(i+1);
+                                }
+                            }
+                        }
+                        break;
+                    case 117:
+                        for (int i = 0; i < listPeerConnected.Count; i++)
+                        {
+                            if ((connectedCreatorPeer.socket.RemoteEndPoint as IPEndPoint).Address.Equals((listPeerConnected[i].socket.RemoteEndPoint as IPEndPoint).Address))
+                            {
+                                listPeerConnected.RemoveAt(i);
+                                connectedCreatorPeer.socket.Shutdown(SocketShutdown.Both);
+                                connectedCreatorPeer.socket.Close();
+                                connectedCreatorPeer = null;
+                            }
+                        }
+                        break;
+                    case 190:
+                        msgToSend.code = 190;
+                        message = msgToSend.ToByte();
+                        SendCube(message, (currSocket.RemoteEndPoint as IPEndPoint).Address);
+                        RunGame();
+                        break;
                 }
 
                 //buffer = new byte[1024];
@@ -504,6 +625,7 @@ namespace PeerModule
 
         public void ClosePeer()
         {
+            sListener.Shutdown(SocketShutdown.Both);
             sListener.Close();
         }
 
@@ -548,6 +670,7 @@ namespace PeerModule
                     listTeam1Peers.Add(localIP);
                     SendPeersList();
                     UpdateForm();
+                    peerForm.DisableTeamButton();
                 }
             }
         }
@@ -574,6 +697,7 @@ namespace PeerModule
                     listTeam2Peers.Add(localIP);
                     SendPeersList();
                     UpdateForm();
+                    peerForm.DisableTeamButton();
                 }
             }
         }
@@ -594,6 +718,229 @@ namespace PeerModule
                 cs.socket.BeginSend(message, 0, message.Length, SocketFlags.None,
                         new AsyncCallback(OnSend), cs.socket);
             }
+        }
+
+        public void StartGame()
+        {
+            SendInitHyperCubeCommand(0);
+        }
+
+        public void SendInitHyperCubeCommand(int peerIndex)
+        {
+            MessageData msgToSend = new MessageData();
+            msgToSend.code = 110;
+            byte[] message = msgToSend.ToByte();
+            ConnectionState cs = listPeerConnected[peerIndex];
+            cs.socket.BeginSend(message, 0, message.Length, SocketFlags.None,
+                        new AsyncCallback(OnSend), cs.socket);
+        }
+
+        public void InitSuperPeerHyperCube()
+        {
+            int number = GetSelfPositionNumber();
+            if (number > 10 && number < 20)
+            {
+                switch (number % 10)
+                {
+                    case 1:
+                        //HandshakePeer(listTeam1Peers[1]);
+                        //HandshakePeer(listTeam1Peers[2]);
+                        //HandshakePeer(listTeam2Peers[0]);
+                        if (listTeam1Peers.Count > 3)
+                            CloseConnection(listTeam1Peers[3]);
+                        if (listTeam2Peers.Count > 1)
+                            CloseConnection(listTeam2Peers[1]);
+                        if (listTeam2Peers.Count > 2)
+                            CloseConnection(listTeam2Peers[2]);
+                        if (listTeam2Peers.Count > 3)
+                            CloseConnection(listTeam2Peers[3]);
+                        break;
+                    case 2:
+                        //HandshakePeer(listTeam1Peers[0]);
+                        //HandshakePeer(listTeam1Peers[3]);
+                        //HandshakePeer(listTeam2Peers[1]);
+                        if (listTeam1Peers.Count > 2)
+                            CloseConnection(listTeam1Peers[2]);
+                        if (listTeam2Peers.Count > 0)
+                            CloseConnection(listTeam2Peers[0]);
+                        if (listTeam2Peers.Count > 2)
+                            CloseConnection(listTeam2Peers[2]);
+                        if (listTeam2Peers.Count > 3)
+                            CloseConnection(listTeam2Peers[3]);
+                        break;
+                    case 3:
+                        //HandshakePeer(listTeam1Peers[0]);
+                        //HandshakePeer(listTeam1Peers[3]);
+                        //HandshakePeer(listTeam2Peers[2]);
+                        if (listTeam1Peers.Count > 1)
+                            CloseConnection(listTeam1Peers[1]);
+                        if (listTeam2Peers.Count > 0)
+                            CloseConnection(listTeam2Peers[0]);
+                        if (listTeam2Peers.Count > 1)
+                            CloseConnection(listTeam2Peers[1]);
+                        if (listTeam2Peers.Count > 3)
+                        CloseConnection(listTeam2Peers[3]);
+                        break;
+                    case 4:
+                        //HandshakePeer(listTeam1Peers[1]);
+                        //HandshakePeer(listTeam1Peers[2]);
+                        //HandshakePeer(listTeam2Peers[3]);
+                        if (listTeam1Peers.Count > 0)
+                            CloseConnection(listTeam1Peers[0]);
+                        if (listTeam2Peers.Count > 0)
+                            CloseConnection(listTeam2Peers[0]);
+                        if (listTeam2Peers.Count > 1)
+                            CloseConnection(listTeam2Peers[1]);
+                        if (listTeam2Peers.Count > 2)
+                            CloseConnection(listTeam2Peers[2]);
+                        break;
+                }
+            }
+            else if (number > 20)
+            {
+                switch (number % 10)
+                {
+                    case 1:
+                        if (listTeam2Peers.Count > 3)
+                            CloseConnection(listTeam2Peers[3]);
+                        if (listTeam1Peers.Count > 1)
+                            CloseConnection(listTeam1Peers[1]);
+                        if (listTeam1Peers.Count > 2)
+                            CloseConnection(listTeam1Peers[2]);
+                        if (listTeam1Peers.Count > 3)
+                            CloseConnection(listTeam1Peers[3]);
+                        break;
+                    case 2:
+                        if (listTeam2Peers.Count > 2)
+                            CloseConnection(listTeam2Peers[2]);
+                        if (listTeam1Peers.Count > 0)
+                            CloseConnection(listTeam1Peers[0]);
+                        if (listTeam1Peers.Count > 2)
+                            CloseConnection(listTeam1Peers[2]);
+                        if (listTeam1Peers.Count > 3)
+                            CloseConnection(listTeam1Peers[3]);
+                        break;
+                    case 3:
+                        if (listTeam2Peers.Count > 1)
+                            CloseConnection(listTeam2Peers[1]);
+                        if (listTeam1Peers.Count > 0)
+                            CloseConnection(listTeam1Peers[0]);
+                        if (listTeam1Peers.Count > 1)
+                            CloseConnection(listTeam1Peers[1]);
+                        if (listTeam1Peers.Count > 3)
+                            CloseConnection(listTeam1Peers[3]);
+                        break;
+                    case 4:
+                        if (listTeam2Peers.Count > 0)
+                            CloseConnection(listTeam2Peers[0]);
+                        if (listTeam1Peers.Count > 0)
+                            CloseConnection(listTeam1Peers[0]);
+                        if (listTeam1Peers.Count > 1)
+                            CloseConnection(listTeam1Peers[1]);
+                        if (listTeam1Peers.Count > 2)
+                            CloseConnection(listTeam1Peers[2]);
+                        break;
+                }
+            }
+            InitRunGame();
+        }
+
+        public void CloseConnection(IPAddress ip)
+        {
+            for (int i = 0; i < listPeerConnected.Count; i++)
+            {
+                if (ip.Equals((listPeerConnected[i].socket.RemoteEndPoint as IPEndPoint).Address)) 
+                {
+                    MessageData msgToSend = new MessageData();
+                    msgToSend.code = 117;
+                    byte[] message = msgToSend.ToByte();
+                    ConnectionState cs = listPeerConnected[i];
+                    cs.socket.BeginSend(message, 0, message.Length, SocketFlags.None,
+                                new AsyncCallback(OnSend), cs.socket);
+                    cs.socket.Shutdown(SocketShutdown.Both);
+                    cs.socket.Close();
+                    listPeerConnected.RemoveAt(i);
+                }
+            }
+        }
+
+        public void RunGame() 
+        {
+            MessageBox.Show("Game will run");
+        }
+
+        public void InitRunGame()
+        {
+            MessageData msgToSend = new MessageData();
+            msgToSend.code = 190;
+            byte[] message = msgToSend.ToByte();
+            foreach (ConnectionState cs in listPeerConnected)
+            {
+                cs.socket.BeginSend(message, 0, message.Length, SocketFlags.None,
+                                new AsyncCallback(OnSend), cs.socket);
+            }
+            RunGame();
+        }
+
+        public void SendCube(byte[] message, IPAddress ipsender) 
+        {
+            foreach (ConnectionState cs in listPeerConnected)
+            {
+                if (!(cs.socket.RemoteEndPoint as IPEndPoint).Address.Equals(ipsender))
+                {
+                    cs.socket.BeginSend(message, 0, message.Length, SocketFlags.None,
+                                new AsyncCallback(OnSend), cs.socket);
+                }
+            }
+        }
+
+        public void HandshakePeer(IPAddress ip) 
+        {
+            lastCommandCode = 135;
+            bool isAlreadyConnected = false;
+            foreach (ConnectionState cs in listPeerConnected)
+            {
+                if (ip.Equals((cs.socket.RemoteEndPoint as IPEndPoint).Address))
+                {
+                    isAlreadyConnected = true;
+                }
+            }
+            if (!isAlreadyConnected)
+            {
+                MessageData msgToSend = new MessageData();
+                msgToSend.code = 135;
+                byte[] message = msgToSend.ToByte();
+                Socket clSock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+                IPEndPoint ipEndPoint = new IPEndPoint(ip, 3056);
+                IPEndPoint ipLocalEndPoint = new IPEndPoint(localIP, availablePort);
+                availablePort++;
+                clSock.Bind(ipLocalEndPoint);
+
+                clSock.BeginConnect(ipEndPoint, new AsyncCallback(OnConnect), null);
+
+                clSock.BeginSend(message, 0, message.Length, SocketFlags.None,
+                            new AsyncCallback(OnSend), clSock);
+            }
+        }
+
+        public int GetSelfPositionNumber()
+        {
+            for (int i = 0; i < listTeam1Peers.Count; i++)
+            {
+                if (listTeam1Peers[i].Equals(localIP))
+                {
+                    return (11 + i);
+                }
+            }
+            for (int i = 0; i < listTeam2Peers.Count; i++)
+            {
+                if (listTeam2Peers[i].Equals(localIP))
+                {
+                    return (21 + i);
+                }
+            }
+            return 0;
         }
 
         public void UpdateForm()

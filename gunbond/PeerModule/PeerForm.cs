@@ -117,13 +117,14 @@ namespace PeerModule
 
         private void buttonRun_Click(object sender, EventArgs e)
         {
-            Thread thread = new Thread(() =>
-            {
-                game = new GunbondGame();
-                game.Run();
-            });
-            thread.Start();
-            thread.Join();
+            //Thread thread = new Thread(() =>
+            //{
+            //    game = new GunbondGame();
+            //    game.Run();
+            //});
+            //thread.Start();
+            //thread.Join();
+            peer.StartGame();
         }
 
         private void buttonJ_Click_1(object sender, EventArgs e)
@@ -148,6 +149,11 @@ namespace PeerModule
         {
             buttonJoinTeam1.Invoke((MethodInvoker)(() => buttonJoinTeam1.Enabled = false));
             buttonJoinTeam2.Invoke((MethodInvoker)(() => buttonJoinTeam2.Enabled = false));
+        }
+
+        public void EnableStartGame()
+        {
+            buttonRun.Invoke((MethodInvoker)(() => buttonRun.Enabled = true));
         }
 
         private void buttonJoinTeam1_Click(object sender, EventArgs e)
