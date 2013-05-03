@@ -27,3 +27,6 @@ D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\gunbond.exe.config
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\GameEngine.exe
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\GameEngine.pdb
+D:\Semester 6\Sister\Tubes II\Tubes1Sister\gunbond\bin\Debug\gunbond.exe.config
+D:\Semester 6\Sister\Tubes II\Tubes1Sister\gunbond\obj\x86\Debug\gunbond.exe
+D:\Semester 6\Sister\Tubes II\Tubes1Sister\gunbond\obj\x86\Debug\gunbond.pdb

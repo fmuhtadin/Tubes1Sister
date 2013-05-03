@@ -8,6 +8,10 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.IO;
+using System.Net.Sockets;
+using System.Net;
+using System.Text;
 
 namespace GameEngine
 {
@@ -18,6 +22,17 @@ namespace GameEngine
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        private SpriteFont hudFont;
+
+        private Texture2D winOverlay;
+        private Texture2D loseOverlay;
+        private Texture2D diedOverlay;
+
+        // Meta-level game state.
+        private int levelIndex = -1;
+        //private Level level;
+        private bool wasContinuePressed;
 
         public GunbondGame()
         {
@@ -66,6 +81,8 @@ namespace GameEngine
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            
+            
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
