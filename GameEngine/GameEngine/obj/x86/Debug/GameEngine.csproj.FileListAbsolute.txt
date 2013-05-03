@@ -4,3 +4,5 @@ D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\GameEngine.exe
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\GameEngine.pdb
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\GameEngine.csprojResolveAssemblyReference.cache
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\GameEngine.exe
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\GameEngine.pdb

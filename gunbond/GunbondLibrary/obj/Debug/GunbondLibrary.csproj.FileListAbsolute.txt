@@ -6,3 +6,7 @@ D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\GunbondLibrary\bin\Debug\GunbondLibrary.pdb
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\GunbondLibrary\obj\Debug\GunbondLibrary.dll
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\GunbondLibrary\obj\Debug\GunbondLibrary.pdb
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\GunbondLibrary\bin\Debug\GunbondLibrary.dll
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\GunbondLibrary\bin\Debug\GunbondLibrary.pdb
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\GunbondLibrary\obj\Debug\GunbondLibrary.dll
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\GunbondLibrary\obj\Debug\GunbondLibrary.pdb

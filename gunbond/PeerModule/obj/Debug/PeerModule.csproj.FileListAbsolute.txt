@@ -45,3 +45,21 @@ D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.xml
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.exe
 D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.pdb
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.exe.config
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.exe
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.pdb
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\bin\Debug\GameEngine.exe
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\bin\Debug\GunbondLibrary.dll
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.Game.dll
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.Graphics.dll
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.dll
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\bin\Debug\GameEngine.pdb
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\bin\Debug\GunbondLibrary.pdb
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.Game.xml
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.Graphics.xml
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.xml
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.csprojResolveAssemblyReference.cache
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.PeerForm.resources
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.csproj.GenerateResource.Cache
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.exe
+C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.pdb
