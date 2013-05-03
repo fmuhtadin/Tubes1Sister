@@ -246,7 +246,7 @@ namespace PeerModule
                             case 255:
                                 //Success Create Room
                                 listRoomPeers.Add(localIP);
-                                peerForm.UpdateCreatorPeerButton();
+                                peerForm.DisableRoomButton();
                                 UpdateForm();
                                 peerForm.setMessagesText("Create Room Successful");
                                 break;
@@ -296,7 +296,8 @@ namespace PeerModule
                                     connectedCreatorPeer = peerConn;
                                     UpdateForm();
                                     peerForm.setMessagesText("Join Room Successful");
-                                    msgToSend.code = 101;
+                                    peerForm.DisableRoomButton();
+                                    msgToSend.code = 103;
                                     message = msgToSend.ToByte();
                                     currSocket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), currSocket);
                                 }
@@ -396,34 +397,57 @@ namespace PeerModule
                         break;
 
                     case 100:
+                        //send peer ip list
                         listRoomPeers = msgReceived.listIPAddress;
+                        listTeam1Peers = msgReceived.listIPTeam1;
+                        listTeam2Peers = msgReceived.listIPTeam2;
+                        UpdateForm();
+                        if (lastCommandCode == 101 || lastCommandCode == 102)
+                        {
+                            peerForm.DisableTeamButton();
+                        }
+                        break;
+
+                    case 103:
+                        //request peer ip list
+                        SendPeersList();
                         UpdateForm();
                         break;
 
                     case 101:
-                        msgToSend.code = 100;
-                        msgToSend.ipCount = listRoomPeers.Count;
-                        msgToSend.listIPAddress = listRoomPeers;
-                        message = msgToSend.ToByte();
-                        currSocket.BeginSend(message, 0, message.Length, SocketFlags.None,
-                                    new AsyncCallback(OnSend), currSocket);
-                        UpdateForm();
+                        //request join team 1
+                        if (listTeam1Peers.Count < 4)
+                        {
+                            listTeam1Peers.Add((currSocket.RemoteEndPoint as IPEndPoint).Address);
+                            SendPeersList();
+                            UpdateForm();
+                        }
+                        else
+                        {
+                            msgToSend.code = 128;
+                            message = msgToSend.ToByte();
+                            currSocket.BeginSend(message, 0, message.Length, SocketFlags.None,
+                                        new AsyncCallback(OnSend), currSocket);
+                        }
                         break;
 
-                    //case Command.Logout:
-                    //    lstChatters.Items.Remove(msgReceived.strName);
-                    //    break;
-
-                    //case Command.Message:
-                    //    break;
-
-                    //case Command.List:
-                    //    lstChatters.Items.AddRange(msgReceived.strMessage.Split('*'));
-                    //    lstChatters.Items.RemoveAt(lstChatters.Items.Count - 1);
-                    //    txtChatBox.Text += "<<<" + strName + " has joined the room>>>\r\n";
-                    //    break;
+                    case 102:
+                        //request join team 2
+                        if (listTeam2Peers.Count < 4)
+                        {
+                            listTeam2Peers.Add((currSocket.RemoteEndPoint as IPEndPoint).Address);
+                            SendPeersList();
+                            UpdateForm();
+                        }
+                        else
+                        {
+                            msgToSend.code = 128;
+                            message = msgToSend.ToByte();
+                            currSocket.BeginSend(message, 0, message.Length, SocketFlags.None,
+                                        new AsyncCallback(OnSend), currSocket);
+                        }
+                        break;
                 }
-
 
                 //buffer = new byte[1024];
 
@@ -433,7 +457,6 @@ namespace PeerModule
                 }
                 else
                 {
-
                     currSocket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, new AsyncCallback(OnReceive), currSocket);
                 }
             }
@@ -501,9 +524,83 @@ namespace PeerModule
             trackerSocket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), trackerSocket);
         }
 
+        public void JoinTeam1()
+        {
+            if (roomIdHeld == null)
+            {
+                //self is not creator peer
+                lastCommandCode = 101;
+                MessageData msgToSend = new MessageData();
+                msgToSend.pstr = "GunbondGame";
+                byte[] reserved = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                msgToSend.reservedBytes = reserved;
+                msgToSend.code = 101;
+                byte[] message = msgToSend.ToByte();
+
+                //Send the message to the superpeer
+                connectedCreatorPeer.socket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), connectedCreatorPeer.socket);
+            }
+            else
+            {
+                //self is creator peer
+                if (listTeam1Peers.Count < 4)
+                {
+                    listTeam1Peers.Add(localIP);
+                    SendPeersList();
+                    UpdateForm();
+                }
+            }
+        }
+
+        public void JoinTeam2()
+        {
+            if (roomIdHeld == null)
+            {
+                lastCommandCode = 102;
+                MessageData msgToSend = new MessageData();
+                msgToSend.pstr = "GunbondGame";
+                byte[] reserved = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                msgToSend.reservedBytes = reserved;
+                msgToSend.code = 102;
+                byte[] message = msgToSend.ToByte();
+
+                //Send the message to the superpeer
+                connectedCreatorPeer.socket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), connectedCreatorPeer.socket);
+            }
+            else
+            {
+                if (listTeam2Peers.Count < 4)
+                {
+                    listTeam2Peers.Add(localIP);
+                    SendPeersList();
+                    UpdateForm();
+                }
+            }
+        }
+
+        public void SendPeersList() 
+        {
+            MessageData msgToSend = new MessageData();
+            msgToSend.code = 100;
+            msgToSend.ipCount = listRoomPeers.Count;
+            msgToSend.team1Count = listTeam1Peers.Count;
+            msgToSend.team2Count = listTeam2Peers.Count;
+            msgToSend.listIPAddress = listRoomPeers;
+            msgToSend.listIPTeam1 = listTeam1Peers;
+            msgToSend.listIPTeam2 = listTeam2Peers;
+            byte[] message = msgToSend.ToByte();
+            foreach (ConnectionState cs in listPeerConnected)
+            {
+                cs.socket.BeginSend(message, 0, message.Length, SocketFlags.None,
+                        new AsyncCallback(OnSend), cs.socket);
+            }
+        }
+
         public void UpdateForm()
         {
             peerForm.setRoomPeersListBox(listRoomPeers);
+            peerForm.setTeam1PeersListBox(listTeam1Peers);
+            peerForm.setTeam2PeersListBox(listTeam2Peers);
         }
 
     }

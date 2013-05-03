@@ -245,6 +245,7 @@
             this.buttonJoinTeam1.TabIndex = 22;
             this.buttonJoinTeam1.Text = "Join Team 1";
             this.buttonJoinTeam1.UseVisualStyleBackColor = true;
+            this.buttonJoinTeam1.Click += new System.EventHandler(this.buttonJoinTeam1_Click);
             // 
             // buttonJoinTeam2
             // 
@@ -254,6 +255,7 @@
             this.buttonJoinTeam2.TabIndex = 23;
             this.buttonJoinTeam2.Text = "Join Team 2";
             this.buttonJoinTeam2.UseVisualStyleBackColor = true;
+            this.buttonJoinTeam2.Click += new System.EventHandler(this.buttonJoinTeam2_Click);
             // 
             // PeerForm
             // 

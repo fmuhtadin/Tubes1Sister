@@ -75,6 +75,20 @@ namespace PeerModule
                 lbRoomPeers.Invoke((MethodInvoker)(() => lbRoomPeers.Items.Add(s.ToString())));
         }
 
+        public void setTeam1PeersListBox(List<IPAddress> list)
+        {
+            lbTeam1.Invoke((MethodInvoker)(() => lbTeam1.Items.Clear()));
+            foreach (IPAddress s in list)
+                lbTeam1.Invoke((MethodInvoker)(() => lbTeam1.Items.Add(s.ToString())));
+        }
+
+        public void setTeam2PeersListBox(List<IPAddress> list)
+        {
+            lbTeam2.Invoke((MethodInvoker)(() => lbTeam2.Items.Clear()));
+            foreach (IPAddress s in list)
+                lbTeam2.Invoke((MethodInvoker)(() => lbTeam2.Items.Add(s.ToString())));
+        }
+
         public void setPeerIdText(String S)
         {
             textPeerId.Invoke((MethodInvoker)(() => textPeerId.Text = S));
@@ -124,10 +138,26 @@ namespace PeerModule
             return ret;
         }
 
-        public void UpdateCreatorPeerButton()
+        public void DisableRoomButton()
         {
             createRoom.Invoke((MethodInvoker)(() => createRoom.Enabled = false));
             buttonJ.Invoke((MethodInvoker)(() => buttonJ.Enabled = false));
+        }
+
+        public void DisableTeamButton()
+        {
+            buttonJoinTeam1.Invoke((MethodInvoker)(() => buttonJoinTeam1.Enabled = false));
+            buttonJoinTeam2.Invoke((MethodInvoker)(() => buttonJoinTeam2.Enabled = false));
+        }
+
+        private void buttonJoinTeam1_Click(object sender, EventArgs e)
+        {
+            peer.JoinTeam1();
+        }
+
+        private void buttonJoinTeam2_Click(object sender, EventArgs e)
+        {
+            peer.JoinTeam2();
         }
     }
 }

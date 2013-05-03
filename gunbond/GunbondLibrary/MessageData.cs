@@ -37,7 +37,11 @@ namespace GunbondLibrary
         public String roomId;
         public List<Room> listRoom;
         public int ipCount;
+        public int team1Count;
+        public int team2Count;
         public List<IPAddress> listIPAddress;
+        public List<IPAddress> listIPTeam1;
+        public List<IPAddress> listIPTeam2;
 
         public MessageData()
         {
@@ -54,7 +58,11 @@ namespace GunbondLibrary
             roomId = null;
             listRoom = new List<Room>();
             ipCount = 0;
+            team1Count = 0;
+            team2Count = 0;
             listIPAddress = new List<IPAddress>();
+            listIPTeam1 = new List<IPAddress>();
+            listIPTeam2 = new List<IPAddress>();
         }
 
         public MessageData(byte[] data)
@@ -62,6 +70,8 @@ namespace GunbondLibrary
             reservedBytes = new byte[8];
             listRoom = new List<Room>();
             listIPAddress = new List<IPAddress>();
+            listIPTeam1 = new List<IPAddress>();
+            listIPTeam2 = new List<IPAddress>();
             this.pstr = Encoding.UTF8.GetString(data, 0, 11);
             for (int i = 0; i<reservedBytes.Length; i++) {
                 this.reservedBytes[i] = data[10+i];
@@ -144,11 +154,29 @@ namespace GunbondLibrary
                     //list IP Address connected to superpeer
                     next = new byte[4];
                     this.ipCount = BitConverter.ToInt32(data, 20);
+                    this.team1Count = BitConverter.ToInt32(data, 24);
+                    this.team2Count = BitConverter.ToInt32(data, 28);
+                    int count = 0;
                     for (int i = 0; i < ipCount; i++)
                     {
-                        Array.Copy(data, 24 + i * 4, next, 0, 4);
+                        Array.Copy(data, 32 + i * 4, next, 0, 4);
                         IPAddress tmpIP = new IPAddress(next);
                         listIPAddress.Add(tmpIP);
+                        count++;
+                    }
+                    for (int i = 0; i < team1Count; i++)
+                    {
+                        Array.Copy(data, (32 + count * 4) + i * 4, next, 0, 4);
+                        IPAddress tmpIP = new IPAddress(next);
+                        listIPTeam1.Add(tmpIP);
+                        count++;
+                    }
+                    for (int i = 0; i < team2Count; i++)
+                    {
+                        Array.Copy(data, (32 + count * 4) + i * 4, next, 0, 4);
+                        IPAddress tmpIP = new IPAddress(next);
+                        listIPTeam2.Add(tmpIP);
+                        count++;
                     }
                     break;
             }
@@ -213,9 +241,19 @@ namespace GunbondLibrary
                     break;
                 case 100:
                     retByte.AddRange(BitConverter.GetBytes(ipCount));
+                    retByte.AddRange(BitConverter.GetBytes(team1Count));
+                    retByte.AddRange(BitConverter.GetBytes(team2Count));
                     for (int i = 0; i < listIPAddress.Count; i++)
                     {
                         retByte.AddRange(listIPAddress[i].GetAddressBytes());
+                    }
+                    for (int i = 0; i < listIPTeam1.Count; i++)
+                    {
+                        retByte.AddRange(listIPTeam1[i].GetAddressBytes());
+                    }
+                    for (int i = 0; i < listIPTeam2.Count; i++)
+                    {
+                        retByte.AddRange(listIPTeam2[i].GetAddressBytes());
                     }
                     break;
             }
