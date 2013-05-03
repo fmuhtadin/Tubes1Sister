@@ -13,6 +13,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.Text;
 using Microsoft.Xna.Framework.Input.Touch;
+using GunbondLibrary;
 
 namespace GameEngine
 {
@@ -23,12 +24,13 @@ namespace GameEngine
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        // Represents the player 
-        Player player;
-        Player player2;
+        // Represents the player
+        List<Player> Players;
         // Keyboard states used to determine key presses
         KeyboardState currentKeyboardState;
         KeyboardState previousKeyboardState;
+
+        
 
         // Gamepad states used to determine button presses
         GamePadState currentGamePadState;
@@ -49,20 +51,33 @@ namespace GameEngine
         public Texture2D kiriatas;
         public Texture2D kananbawah;
         public Texture2D kananatas;
-        private string horizontal = "kanan";
-        private string vertikal = "bawah";
+        public Texture2D kiribawah2;
+        public Texture2D kiriatas2;
+        public Texture2D kananbawah2;
+        public Texture2D kananatas2;
+        private int horizontal = 0; // 0 kanan, 1 kiri
+        private int vertikal = 0; // 0 bawah2, 1 bawah, 2 atas, 3 atas2
+        private int PlayerNo;
 
         Texture2D projectileTexture;
         List<Projectile> projectiles;
+
+        //Network
+        IPeer peer;
+        IPAddress localIP;
+        List<IPAddress> listTeam1;
+        List<IPAddress> listTeam2;
+        Dictionary<IPAddress, int> listPlayers;
 
         // The rate of fire of the player laser
         TimeSpan fireTime;
         TimeSpan previousFireTime;
 
-        public GunbondGame()
+        public GunbondGame(IPeer inpeer)
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            peer = inpeer;
         }
 
         /// <summary>
@@ -75,8 +90,23 @@ namespace GameEngine
         {
             // TODO: Add your initialization logic here
             // Initialize the player class
-            player = new Player();
-            player2 = new Player();
+            Players = new List<Player>();
+            listPlayers = new Dictionary<IPAddress, int>();
+            localIP = peer.GetSelfIP();
+            listTeam1 = peer.GetListTeam1();
+            listTeam2 = peer.GetListTeam2();
+            int count = 0;
+            for (int i = 0; i < listTeam1.Count; i++)
+            {
+                listPlayers.Add(listTeam1[i], count);
+                count++;
+            }
+            for (int i = 0; i < listTeam2.Count; i++)
+            {
+                listPlayers.Add(listTeam2[i], count);
+                count++;
+            }
+
             // Set a constant player move speed
             playerMoveSpeed = 8.0f;
 
@@ -94,6 +124,12 @@ namespace GameEngine
             base.Initialize();
         }
 
+        private void AddPlayer(Texture2D image,Vector2 position){
+            Player player = new Player();
+            player.Initialize(image, position);
+            Players.Add(player);
+        }
+
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
@@ -104,20 +140,44 @@ namespace GameEngine
             spriteBatch = new SpriteBatch(GraphicsDevice);
             // TODO: use this.Content to load your game content here
             // Load the player resources 
-            Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height );
-            Vector2 playerPosition2 = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X , GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height);
+            Vector2 playerPosition = new Vector2(130, GraphicsDevice.Viewport.Height - 119);
             kiriatas = Content.Load<Texture2D>("kiriatas");
             kiribawah = Content.Load<Texture2D>("kiribawah");
             kananatas = Content.Load<Texture2D>("kananatas");
             kananbawah = Content.Load<Texture2D>("kananbawah");
-            player.Initialize(kananbawah, playerPosition);
-            
-            // Player 2 Dummy
-            player2.Initialize(Content.Load<Texture2D>("enemy"), playerPosition2);
-            player2.Position.X = MathHelper.Clamp(player.Position.X, GraphicsDevice.Viewport.TitleSafeArea.Width - player2.Width, GraphicsDevice.Viewport.Width - player.Width);
-            player2.Position.Y = MathHelper.Clamp(player.Position.Y, 0, GraphicsDevice.Viewport.Height -player.Height);
-            /// Player 2 Dummy
+            kiriatas2 = Content.Load<Texture2D>("kiriatas2");
+            kiribawah2 = Content.Load<Texture2D>("kiribawah2");
+            kananatas2 = Content.Load<Texture2D>("kananatas2");
+            kananbawah2 = Content.Load<Texture2D>("kananbawah2");
 
+            for (int i = 0; i < listTeam1.Count; i++)
+            {
+                if (listTeam1[i].Equals(localIP))
+                {
+                    AddPlayer(kananbawah, new Vector2(10f + 50*i, playerPosition.Y));
+                    PlayerNo = Players.Count - 1;
+                }
+                else
+                {
+                    AddPlayer(Content.Load<Texture2D>("enemy"), new Vector2(10f + 50 * i, playerPosition.Y));
+                }
+            }
+            for (int i = 0; i < listTeam2.Count; i++)
+            {
+                if (listTeam2[i].Equals(localIP))
+                {
+                    AddPlayer(kananbawah, new Vector2(GraphicsDevice.Viewport.Width - 10f + 50 * i, playerPosition.Y));
+                    PlayerNo = Players.Count - 1;
+                }
+                else
+                {
+                    AddPlayer(Content.Load<Texture2D>("enemy"), new Vector2(GraphicsDevice.Viewport.Width -  10f + 50 * i, playerPosition.Y));
+                }
+            }
+            //AddPlayer(kananbawah, playerPosition);
+
+            //AddPlayer(Content.Load<Texture2D>("enemy"), new Vector2(10f , GraphicsDevice.Viewport.Height - Players[0].Height));
+            
             // Load the parallaxing background
             bgLayer1.Initialize(Content, "bgLayer1", GraphicsDevice.Viewport.Width, -1);
             bgLayer2.Initialize(Content, "bgLayer2", GraphicsDevice.Viewport.Width, -2);
@@ -170,101 +230,147 @@ namespace GameEngine
             base.Update(gameTime);
         }
 
+        private void NewSprite(int Player,int horizontal,int vertical)
+        {
+            if (horizontal == 0) // Kanan
+            {
+                switch (vertikal)
+                {
+                    case 0: // bawah 2
+                        Players[Player].PlayerTexture = kananbawah2;
+                        break;
+                    case 1: // bawah
+                        Players[Player].PlayerTexture = kananbawah;
+                        break;
+                    case 2: // atas
+                        Players[Player].PlayerTexture = kananatas;
+                        break;
+                    default: // atas 2
+                        Players[Player].PlayerTexture = kananatas2;
+                        break;
+                }
+            }
+            else
+            {
+                switch (vertikal)
+                {
+                    case 0: // bawah 2
+                        Players[Player].PlayerTexture = kiribawah2;
+                        break;
+                    case 1: // bawah
+                        Players[Player].PlayerTexture = kiribawah;
+                        break;
+                    case 2: // atas
+                        Players[Player].PlayerTexture = kiriatas;
+                        break;
+                    default: // atas 2
+                        Players[Player].PlayerTexture = kiriatas2;
+                        break;
+                }
+            }
+        }
+
+        private void Move(Player player, int direction /* 0 kanan, 1 kiri */)
+        {
+            if (direction == 0) // kanan
+            {
+                player.Position.X += playerMoveSpeed;
+            }
+            else // kiri
+            {
+                player.Position.X -= playerMoveSpeed;
+            }
+        }
+
+        public void UpdateOtherPlayer(IPAddress otherIP, int state)
+        {
+            HandleOtherPlayerMovement(listPlayers[otherIP], state);
+        }
+
         private void UpdatePlayer(GameTime gameTime)
         {
-            player.Update(gameTime);
-            player2.Update(gameTime);
-            // Get Thumbstick Controls
-            player.Position.X += currentGamePadState.ThumbSticks.Left.X * playerMoveSpeed;
-            player.Position.Y -= currentGamePadState.ThumbSticks.Left.Y * playerMoveSpeed;
+            for (int i = 0; i < Players.Count; i++)
+            {
+                Players[i].Update(gameTime);
+            }
+            HandlePlayerMovement();
+        }
 
-            Vector2 PKananBawah = player.Position + new Vector2(player.Width, player.Height/2 + 20);
-
+        private void HandlePlayerMovement()
+        {
             // Space
-            if((currentKeyboardState.IsKeyDown(Keys.Space))&&(previousKeyboardState.IsKeyUp(Keys.Space))){
-                if (horizontal == "kanan")
-                {
-                    if (vertikal == "bawah") AddProjectile(PKananBawah);
-                }
+            if ((currentKeyboardState.IsKeyDown(Keys.Space)) && (previousKeyboardState.IsKeyUp(Keys.Space)))
+            {
+                AddProjectile(Players[PlayerNo], horizontal, vertikal);
+                peer.SendPosition(0);
             }
 
             // Use the Keyboard / Dpad
-            if (currentKeyboardState.IsKeyDown(Keys.Left) ||
-            currentGamePadState.DPad.Left == ButtonState.Pressed)
+            if (currentKeyboardState.IsKeyDown(Keys.Left))
             {
-                if (horizontal == "kanan")
-                {
-                    if (vertikal == "atas")
-                    {
-                        player.PlayerTexture = kiriatas;
-                        
-                    }
-                    else
-                    {
-                        player.PlayerTexture = kiribawah;
-                    }
-                    horizontal = "kiri";
-                }
-                
-                player.Position.X -= playerMoveSpeed;
-                
+                if (horizontal == 0) horizontal = 1;
+                Move(Players[PlayerNo], 1);
+                NewSprite(PlayerNo, horizontal, vertikal);
+                peer.SendPosition(-1);
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Right) ||
-            currentGamePadState.DPad.Right == ButtonState.Pressed)
+            if (currentKeyboardState.IsKeyDown(Keys.Right))
             {
-                if (horizontal == "kiri")
-                {
-                    if (vertikal == "atas")
-                    {
-                        player.PlayerTexture = kananatas;
-                    }
-                    else
-                    {
-                        player.PlayerTexture = kananbawah;
-                    }
-                    horizontal = "kanan";
-                }
-                player.Position.X += playerMoveSpeed;
+                if (horizontal == 1) horizontal = 0;
+                Move(Players[PlayerNo], 0);
+                NewSprite(PlayerNo, horizontal, vertikal);
+                peer.SendPosition(1);
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Up) ||
-            currentGamePadState.DPad.Up == ButtonState.Pressed)
+            if (currentKeyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up))
             {
-                if (vertikal == "bawah")
-                {
-                    if (horizontal == "kanan")
-                    {
-                        player.PlayerTexture = kananatas;
-                    }
-                    else
-                    {
-                        player.PlayerTexture = kiriatas;
-                    }
-                    vertikal = "atas";
-                }
-                //player.Position.Y -= playerMoveSpeed;
+                if (vertikal < 3) vertikal++;
+                NewSprite(PlayerNo, horizontal, vertikal);
+                peer.SendPosition(3);
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Down) ||
-            currentGamePadState.DPad.Down == ButtonState.Pressed)
+            if (currentKeyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down))
             {
-                if (vertikal == "atas")
-                {
-                    if (horizontal == "kanan")
-                    {
-                        player.PlayerTexture = kananbawah;
-                    }
-                    else
-                    {
-                        player.PlayerTexture = kiribawah;
-                    }
-                    vertikal = "bawah";
-                }
-                //player.Position.Y += playerMoveSpeed;
+                if (vertikal > 0) vertikal--;
+                NewSprite(PlayerNo, horizontal, vertikal);
+                peer.SendPosition(4);
+            }
+            // Make sure that the player does not go out of bounds
+            Players[PlayerNo].Position.X = MathHelper.Clamp(Players[PlayerNo].Position.X, 0, GraphicsDevice.Viewport.Width + -Players[PlayerNo].Width);
+            Players[PlayerNo].Position.Y = MathHelper.Clamp(Players[PlayerNo].Position.Y, 0, GraphicsDevice.Viewport.Height + -Players[PlayerNo].Height);
+        }
+
+        private void HandleOtherPlayerMovement(int playerNo, int state)
+        {
+            // Space
+            if (state == 0)
+            {
+                AddProjectile(Players[playerNo], horizontal, vertikal);
             }
 
+            // Use the Keyboard / Dpad
+            if (state == -1)
+            {
+                if (horizontal == 0) horizontal = 1;
+                Move(Players[playerNo], 1);
+                NewSprite(playerNo, horizontal, vertikal);
+            }
+            if (state == 1)
+            {
+                if (horizontal == 1) horizontal = 0;
+                Move(Players[playerNo], 0);
+                NewSprite(playerNo, horizontal, vertikal);
+            }
+            if (state == 3)
+            {
+                if (vertikal < 3) vertikal++;
+                NewSprite(playerNo, horizontal, vertikal);
+            }
+            if (state == 4)
+            {
+                if (vertikal > 0) vertikal--;
+                NewSprite(playerNo, horizontal, vertikal);
+            }
             // Make sure that the player does not go out of bounds
-            player.Position.X = MathHelper.Clamp(player.Position.X, 0, GraphicsDevice.Viewport.Width + - player.Width);
-            player.Position.Y = MathHelper.Clamp(player.Position.Y, 0, GraphicsDevice.Viewport.Height + - player.Height);
-            
+            Players[playerNo].Position.X = MathHelper.Clamp(Players[playerNo].Position.X, 0, GraphicsDevice.Viewport.Width + -Players[playerNo].Width);
+            Players[playerNo].Position.Y = MathHelper.Clamp(Players[playerNo].Position.Y, 0, GraphicsDevice.Viewport.Height + -Players[playerNo].Height);
         }
 
         private void UpdateProjectiles()
@@ -300,8 +406,10 @@ namespace GameEngine
             bgLayer2.Draw(spriteBatch);
 
             // Draw the Player
-            player.Draw(spriteBatch);
-            player2.Draw(spriteBatch);
+            for (int i = 0; i < Players.Count; i++)
+            {
+                Players[i].Draw(spriteBatch);
+            }
 
             // Draw the Projectiles
             for (int i = 0; i < projectiles.Count; i++)
@@ -315,8 +423,9 @@ namespace GameEngine
             base.Draw(gameTime);
         }
 
-        private void AddProjectile(Vector2 position)
+        private void AddProjectile(Player P,int horizontal, int vertikal)
         {
+            Vector2 position = P.Position + new Vector2(P.Width,0);
             Projectile projectile = new Projectile();
             projectile.Initialize(GraphicsDevice.Viewport, projectileTexture, position);
             projectiles.Add(projectile);

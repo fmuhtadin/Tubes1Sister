@@ -38,7 +38,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\x86\Debug</OutputPath>
+    <OutputPath>..\..\gunbond\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -74,7 +74,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animation.cs" />
-    <Compile Include="Game.cs" />
     <Compile Include="OtherPlayer.cs" />
     <Compile Include="ParallaxingBackground.cs" />
     <Compile Include="Player.cs" />
@@ -90,6 +89,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\gunbond\GunbondLibrary\GunbondLibrary.csproj">
+      <Project>{CC7BE85C-4874-4BD1-86E5-BF62CBA60677}</Project>
+      <Name>GunbondLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameEngineContent\GameEngineContent.contentproj">
       <Name>GameEngineContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>

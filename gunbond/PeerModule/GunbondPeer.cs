@@ -32,7 +32,7 @@ namespace PeerModule
         }
     }
 
-    class GunbondPeer
+    class GunbondPeer : IPeer
     {
         public Socket clientSocket;
         public Socket trackerSocket;
@@ -568,6 +568,14 @@ namespace PeerModule
                         SendCube(message, (currSocket.RemoteEndPoint as IPEndPoint).Address);
                         RunGame();
                         break;
+                    case 70:
+                        msgToSend.code = 70;
+                        msgToSend.peerId = msgReceived.peerId;
+                        msgToSend.state = msgReceived.state;
+                        message = msgToSend.ToByte();
+                        SendCube(message, (currSocket.RemoteEndPoint as IPEndPoint).Address);
+                        UpdateOtherPlayer(msgReceived.peerId,msgReceived.state);
+                        break;
                 }
 
                 //buffer = new byte[1024];
@@ -866,7 +874,7 @@ namespace PeerModule
 
         public void RunGame() 
         {
-            MessageBox.Show("Game will run");
+            peerForm.StartGame();
         }
 
         public void InitRunGame()
@@ -948,6 +956,40 @@ namespace PeerModule
             peerForm.setRoomPeersListBox(listRoomPeers);
             peerForm.setTeam1PeersListBox(listTeam1Peers);
             peerForm.setTeam2PeersListBox(listTeam2Peers);
+        }
+
+
+        public void SendPosition(int state)
+        {
+            MessageData msgToSend = new MessageData();
+            msgToSend.code = 70;
+            msgToSend.peerId = localIP;
+            msgToSend.state = state;
+            byte[] message = msgToSend.ToByte();
+            foreach (ConnectionState cs in listPeerConnected)
+            {
+                cs.socket.BeginSend(message, 0, message.Length, SocketFlags.None,new AsyncCallback(OnSend), cs.socket);
+            }
+        }
+
+        public void UpdateOtherPlayer(IPAddress ip, int state)
+        {
+            peerForm.UpdateOtherPlayer(ip, state);
+        }
+
+        public List<IPAddress> GetListTeam1()
+        {
+            return listTeam1Peers;
+        }
+
+        public List<IPAddress> GetListTeam2()
+        {
+            return listTeam2Peers;
+        }
+
+        public IPAddress GetSelfIP()
+        {
+            return localIP;
         }
 
     }

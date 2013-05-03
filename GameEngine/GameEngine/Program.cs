@@ -10,10 +10,7 @@ namespace GameEngine
         /// </summary>
         static void Main(string[] args)
         {
-            using (GunbondGame game = new GunbondGame())
-            {
-                game.Run();
-            }
+            
         }
     }
 #endif

@@ -22,6 +22,7 @@ namespace PeerModule
 
         GunbondPeer peer;
         GunbondGame game;
+        Thread thread;
 
         public PeerForm()
         {
@@ -125,6 +126,22 @@ namespace PeerModule
             //thread.Start();
             //thread.Join();
             peer.StartGame();
+        }
+
+        public void StartGame()
+        {
+            thread = new Thread(() =>
+            {
+                game = new GunbondGame(peer);
+                game.Run();
+            });
+            thread.Start();
+            thread.Join();
+        }
+
+        public void UpdateOtherPlayer(IPAddress ip, int state)
+        {
+            game.UpdateOtherPlayer(ip, state);
         }
 
         private void buttonJ_Click_1(object sender, EventArgs e)

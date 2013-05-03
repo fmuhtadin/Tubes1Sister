@@ -42,6 +42,7 @@ namespace GunbondLibrary
         public List<IPAddress> listIPAddress;
         public List<IPAddress> listIPTeam1;
         public List<IPAddress> listIPTeam2;
+        public int state;
 
         public MessageData()
         {
@@ -60,6 +61,7 @@ namespace GunbondLibrary
             ipCount = 0;
             team1Count = 0;
             team2Count = 0;
+            state = 0;
             listIPAddress = new List<IPAddress>();
             listIPTeam1 = new List<IPAddress>();
             listIPTeam2 = new List<IPAddress>();
@@ -179,6 +181,12 @@ namespace GunbondLibrary
                         count++;
                     }
                     break;
+                case 70:
+                    next = new byte[4];
+                    Array.Copy(data, 20, next, 0, 4);
+                    peerId = new IPAddress(next);
+                    this.state = BitConverter.ToInt32(data, 24);
+                    break;
             }
 
         }
@@ -255,6 +263,10 @@ namespace GunbondLibrary
                     {
                         retByte.AddRange(listIPTeam2[i].GetAddressBytes());
                     }
+                    break;
+                case 70:
+                    retByte.AddRange(peerId.GetAddressBytes());
+                    retByte.AddRange(BitConverter.GetBytes(state));
                     break;
             }
             return retByte.ToArray();
