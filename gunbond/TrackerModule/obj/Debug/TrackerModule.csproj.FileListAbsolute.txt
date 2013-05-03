@@ -7,16 +7,6 @@ D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 
 D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\TrackerModule\obj\Debug\TrackerModule.csproj.GenerateResource.Cache
 D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\TrackerModule\obj\Debug\TrackerModule.exe
 D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\TrackerModule\obj\Debug\TrackerModule.pdb
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\obj\Debug\TrackerModule.TrackerForm.resources
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\obj\Debug\TrackerModule.csproj.GenerateResource.Cache
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\bin\Debug\TrackerModule.exe.config
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\bin\Debug\TrackerModule.exe
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\bin\Debug\TrackerModule.pdb
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\bin\Debug\GunbondLibrary.dll
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\bin\Debug\GunbondLibrary.pdb
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\obj\Debug\TrackerModule.csprojResolveAssemblyReference.cache
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\obj\Debug\TrackerModule.exe
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\obj\Debug\TrackerModule.pdb
 C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\TrackerModule\bin\Debug\TrackerModule.exe.config
 C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\TrackerModule\bin\Debug\TrackerModule.exe
 C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\TrackerModule\bin\Debug\TrackerModule.pdb
@@ -27,3 +17,13 @@ C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\Tracker
 C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\TrackerModule\obj\Debug\TrackerModule.csproj.GenerateResource.Cache
 C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\TrackerModule\obj\Debug\TrackerModule.exe
 C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\TrackerModule\obj\Debug\TrackerModule.pdb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\bin\Debug\TrackerModule.exe.config
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\bin\Debug\TrackerModule.exe
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\bin\Debug\TrackerModule.pdb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\bin\Debug\GunbondLibrary.dll
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\bin\Debug\GunbondLibrary.pdb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\obj\Debug\TrackerModule.csprojResolveAssemblyReference.cache
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\obj\Debug\TrackerModule.TrackerForm.resources
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\obj\Debug\TrackerModule.csproj.GenerateResource.Cache
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\obj\Debug\TrackerModule.exe
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\TrackerModule\obj\Debug\TrackerModule.pdb

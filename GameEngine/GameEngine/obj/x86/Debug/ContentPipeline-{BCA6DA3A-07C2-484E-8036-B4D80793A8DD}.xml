@@ -1,6 +1,215 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>bgLayer1.png</Source>
+      <Name>bgLayer1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\bgLayer1.xnb</Output>
+      <Time>2013-05-03T09:05:10+07:00</Time>
+    </Item>
+    <Item>
+      <Source>bgLayer2.png</Source>
+      <Name>bgLayer2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\bgLayer2.xnb</Output>
+      <Time>2013-05-03T09:05:34+07:00</Time>
+    </Item>
+    <Item>
+      <Source>endMenu.png</Source>
+      <Name>endMenu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\endMenu.xnb</Output>
+      <Time>2011-04-01T09:42:38+07:00</Time>
+    </Item>
+    <Item>
+      <Source>enemy.PNG</Source>
+      <Name>enemy</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\enemy.xnb</Output>
+      <Time>2013-05-03T10:39:16+07:00</Time>
+    </Item>
+    <Item>
+      <Source>explosion.png</Source>
+      <Name>explosion</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\explosion.xnb</Output>
+      <Time>2011-04-01T09:42:38+07:00</Time>
+    </Item>
+    <Item>
+      <Source>kananatas.png</Source>
+      <Name>kananatas</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\kananatas.xnb</Output>
+      <Time>2013-05-03T09:29:36+07:00</Time>
+    </Item>
+    <Item>
+      <Source>kananbawah.png</Source>
+      <Name>kananbawah</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\kananbawah.xnb</Output>
+      <Time>2013-05-03T09:29:10+07:00</Time>
+    </Item>
+    <Item>
+      <Source>kiriatas.png</Source>
+      <Name>kiriatas</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\kiriatas.xnb</Output>
+      <Time>2013-05-03T09:28:32+07:00</Time>
+    </Item>
+    <Item>
+      <Source>kiribawah.png</Source>
+      <Name>kiribawah</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\kiribawah.xnb</Output>
+      <Time>2013-05-03T09:28:08+07:00</Time>
+    </Item>
+    <Item>
+      <Source>laser.png</Source>
+      <Name>laser</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\laser.xnb</Output>
+      <Time>2013-05-03T13:25:42+07:00</Time>
+    </Item>
+    <Item>
+      <Source>laser1.png</Source>
+      <Name>laser1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\laser1.xnb</Output>
+      <Time>2011-04-01T09:42:38+07:00</Time>
+    </Item>
+    <Item>
+      <Source>mainbackground.png</Source>
+      <Name>mainbackground</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\mainbackground.xnb</Output>
+      <Time>2013-05-03T09:10:02+07:00</Time>
+    </Item>
+    <Item>
+      <Source>mainMenu.png</Source>
+      <Name>mainMenu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\mainMenu.xnb</Output>
+      <Time>2011-04-01T09:42:38+07:00</Time>
+    </Item>
+    <Item>
+      <Source>mine.png</Source>
+      <Name>mine</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\mine.xnb</Output>
+      <Time>2011-04-01T09:42:38+07:00</Time>
+    </Item>
+    <Item>
+      <Source>mineAnimation.png</Source>
+      <Name>mineAnimation</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\mineAnimation.xnb</Output>
+      <Time>2011-04-01T09:42:38+07:00</Time>
+    </Item>
+    <Item>
+      <Source>player 1.png</Source>
+      <Name>player 1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\player 1.xnb</Output>
+      <Time>2011-04-01T09:42:38+07:00</Time>
+    </Item>
+    <Item>
+      <Source>player.png</Source>
+      <Name>player</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\player.xnb</Output>
+      <Time>2013-05-03T09:19:52+07:00</Time>
+    </Item>
+    <Item>
+      <Source>shipAnimation.png</Source>
+      <Name>shipAnimation</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\shipAnimation.xnb</Output>
+      <Time>2011-04-01T09:42:38+07:00</Time>
+    </Item>
+    <Item>
+      <Source>gameFont.spritefont</Source>
+      <Name>gameFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\gameFont.xnb</Output>
+      <Time>2011-04-01T09:42:38+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\explosion.wav</Source>
+      <Name>Sound\explosion</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\Sound\explosion.xnb</Output>
+      <Time>2011-04-01T09:42:38+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\laserFire.wav</Source>
+      <Name>Sound\laserFire</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\Sound\laserFire.xnb</Output>
+      <Time>2011-04-01T09:42:38+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\gameMusic.mp3</Source>
+      <Name>Sound\gameMusic</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\Sound\gameMusic.xnb</Output>
+      <Extra>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\Sound\gameMusic.wma</Extra>
+      <Time>2011-04-01T09:42:38+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\menuMusic.mp3</Source>
+      <Name>Sound\menuMusic</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\Sound\menuMusic.xnb</Output>
+      <Extra>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\Sound\menuMusic.wma</Extra>
+      <Time>2011-04-01T09:42:38+07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{BCA6DA3A-07C2-484E-8036-B4D80793A8DD}</ContentProjectGUID>
@@ -14,6 +223,30 @@
       <OutputDirectory>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2011-09-01T16:22:30+07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2011-09-01T16:22:30+07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2011-09-01T16:22:30+07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2011-09-01T16:22:30+07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2011-09-01T16:22:30+07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2011-09-01T16:22:30+07:00</Value>
+      </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
         <Value>2012-10-29T16:30:30.9359178+07:00</Value>

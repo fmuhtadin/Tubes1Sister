@@ -1,8 +1,32 @@
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\GameEngine.exe
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\GameEngine.pdb
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\GameEngine.exe
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\GameEngine.pdb
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\GameEngine.csprojResolveAssemblyReference.cache
 C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\GameEngine.exe
 C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\GameEngine.pdb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\GameEngine.exe
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\GameEngine.pdb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\GameEngine.exe
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\obj\x86\Debug\GameEngine.pdb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\bgLayer1.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\bgLayer2.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\endMenu.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\enemy.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\explosion.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\kananatas.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\kananbawah.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\kiriatas.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\kiribawah.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\laser.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\laser1.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\mainbackground.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\mainMenu.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\mine.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\mineAnimation.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\player 1.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\player.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\shipAnimation.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\gameFont.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\Sound\explosion.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\Sound\laserFire.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\Sound\gameMusic.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\Sound\menuMusic.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\Sound\gameMusic.wma
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\GameEngine\GameEngine\bin\x86\Debug\Content\Sound\menuMusic.wma

@@ -27,24 +27,6 @@ D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 
 D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.csproj.GenerateResource.Cache
 D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.exe
 D:\documents\my documents\kuliah\semester 6\if3056 sistem terdistribusi\tubes 1 sister\GitProject\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.pdb
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.csprojResolveAssemblyReference.cache
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.PeerForm.resources
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.csproj.GenerateResource.Cache
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.exe.config
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.exe
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.pdb
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\GameEngine.exe
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\GunbondLibrary.dll
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.Game.dll
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.Graphics.dll
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.dll
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\GameEngine.pdb
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\GunbondLibrary.pdb
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.Game.xml
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.Graphics.xml
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.xml
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.exe
-D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.pdb
 C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.exe.config
 C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.exe
 C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.pdb
@@ -63,3 +45,46 @@ C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerMod
 C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.csproj.GenerateResource.Cache
 C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.exe
 C:\Users\Asus\Documents\Kuliah\Sistem Terdistribusi\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.pdb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.csprojResolveAssemblyReference.cache
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.PeerForm.resources
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.csproj.GenerateResource.Cache
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.exe.config
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.exe
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\PeerModule.pdb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\GameEngine.exe
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\GunbondLibrary.dll
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.Game.dll
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.Graphics.dll
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.dll
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\GameEngine.pdb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\GunbondLibrary.pdb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.Game.xml
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.Graphics.xml
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Microsoft.Xna.Framework.xml
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.exe
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\obj\Debug\PeerModule.pdb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\bgLayer1.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\bgLayer2.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\endMenu.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\enemy.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\explosion.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\kananatas.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\kananbawah.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\kiriatas.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\kiribawah.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\laser.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\laser1.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\mainbackground.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\mainMenu.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\mine.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\mineAnimation.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\player 1.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\player.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\shipAnimation.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\gameFont.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\Sound\explosion.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\Sound\laserFire.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\Sound\gameMusic.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\Sound\menuMusic.xnb
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\Sound\gameMusic.wma
+D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\PeerModule\bin\Debug\Content\Sound\menuMusic.wma

@@ -1,0 +1,25 @@
+Content\bgLayer1.xnb
+Content\bgLayer2.xnb
+Content\endMenu.xnb
+Content\enemy.xnb
+Content\explosion.xnb
+Content\kananatas.xnb
+Content\kananbawah.xnb
+Content\kiriatas.xnb
+Content\kiribawah.xnb
+Content\laser.xnb
+Content\laser1.xnb
+Content\mainbackground.xnb
+Content\mainMenu.xnb
+Content\mine.xnb
+Content\mineAnimation.xnb
+Content\player 1.xnb
+Content\player.xnb
+Content\shipAnimation.xnb
+Content\gameFont.xnb
+Content\Sound\explosion.xnb
+Content\Sound\laserFire.xnb
+Content\Sound\gameMusic.xnb
+Content\Sound\gameMusic.wma
+Content\Sound\menuMusic.xnb
+Content\Sound\menuMusic.wma
