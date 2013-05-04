@@ -29,18 +29,9 @@ namespace GameEngine
         public int vertikal = 0; // 0 bawah2, 1 bawah, 2 atas, 3 atas2
 
         // Animation representing the player
-        public Texture2D kanan0;
-        public Texture2D kanan1;
-        public Texture2D kanan2;
-        public Texture2D kanan3;
-        public Texture2D kiri0;
-        public Texture2D kiri1;
-        public Texture2D kiri2;
-        public Texture2D kiri3;
-
-        // Health Texture
-        public Texture2D mSpriteTexture;
-
+        public Texture2D sprite;
+        public Rectangle destinationRect;
+        public Rectangle sourceRect;
 
         // Position of the Player relative to the upper left side of the screen
         public Vector2 Position;
@@ -55,28 +46,21 @@ namespace GameEngine
         public int HealthPos;
 
         // Get the width of the player ship
-        public int Width
-        {
-            get { return kanan0.Width; }
-        }
+        public int Width = 65;
 
         // Get the height of the player ship
-        public int Height
-        {
-            get { return kanan0.Height; }
-        }
+        public int Height = 60;
 
-        public void Initialize(Texture2D R0, Texture2D R1, Texture2D R2, Texture2D R3, Texture2D L0, Texture2D L1, Texture2D L2, Texture2D L3, Vector2 position)
-        {
-            kanan0 = R0;
-            kanan1 = R1;
-            kanan2 = R2;
-            kanan3 = R3;
-            kiri0 = L0;
-            kiri1 = L1;
-            kiri2 = L2;
-            kiri3 = L3;
+        // Health Texture
+        public Texture2D mSpriteTexture;
 
+        // Team
+        public int Team;
+
+        public void Initialize(Texture2D S, Vector2 position, int Team)
+        {
+            sprite = S;
+            this.Team = Team;
 
             // Set the starting position of the player around the middle of the screen and to the back
             Position = position;
@@ -88,53 +72,15 @@ namespace GameEngine
             Health = 100;
             horizontal = 0;
             vertikal = 0;
+            sourceRect = new Rectangle(0, 0, Width, Height);
+            destinationRect = new Rectangle((int)Position.X - (int)(Width),
+            (int)Position.Y - (int)(Height),
+            Width, Height);
         }
 
-        // Update the player animation
-        public void Update(GameTime gameTime)
+        public void GetDamage()
         {
-
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            if (horizontal == 0)//kanan
-            {
-                switch (vertikal)
-                {
-                    case 0: // bawah 2
-                        spriteBatch.Draw(kanan0, Position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-                        break;
-                    case 1: // bawah
-                        spriteBatch.Draw(kanan1, Position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-                        break;
-                    case 2: // atas
-                        spriteBatch.Draw(kanan2, Position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-                        break;
-                    case 3: // atas 2
-                        spriteBatch.Draw(kanan3, Position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-                        break;
-                }
-            }
-            else
-            {
-                switch (vertikal)
-                {
-                    case 0: // bawah 2
-                        spriteBatch.Draw(kiri0, Position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-                        break;
-                    case 1: // bawah
-                        spriteBatch.Draw(kiri1, Position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-                        break;
-                    case 2: // atas
-                        spriteBatch.Draw(kiri2, Position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-                        break;
-                    case 3: // atas 2
-                        spriteBatch.Draw(kiri3, Position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-                        break;
-                }
-            }
-
+            Health -= 10;
         }
 
         public void DrawHealth(SpriteBatch spriteBatch)
@@ -158,9 +104,17 @@ namespace GameEngine
             HealthPos = (int)Position.X + 35;
         }
 
-        public void GetDamage()
+        // Update the player animation
+        public void Update(GameTime gameTime)
         {
-            Health = Health - 10;
+
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            sourceRect = new Rectangle(((4 * horizontal) + vertikal) * Width, 0, Width, Height);
+            destinationRect = new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
+            spriteBatch.Draw(sprite, destinationRect, sourceRect, Color.White);
         }
     }
 }

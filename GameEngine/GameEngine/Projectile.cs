@@ -23,6 +23,7 @@ namespace GameEngine
 
         // Pemilik
         public int Owner;
+        public int Team;
 
         // Represents the viewable boundary of the game
         Viewport viewport;
@@ -45,12 +46,12 @@ namespace GameEngine
         float grafitasi;
         float percepatangrafitasi;
 
-        public void Initialize(Viewport viewport, Texture2D texture, Vector2 position, int horizontal, int vertikal, int Own)
+        public void Initialize(Viewport viewport, Texture2D texture, Vector2 position, int horizontal, int vertikal, int team, int Own)
         {
             Texture = texture;
             Position = position;
             this.viewport = viewport;
-
+            this.Team = team;
             Active = true;
 
             Damage = 2;

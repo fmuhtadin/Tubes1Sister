@@ -47,6 +47,10 @@ namespace GameEngine
         ParallaxingBackground bgLayer1;
         ParallaxingBackground bgLayer2;
 
+        Texture2D winscreen;
+        Texture2D winscreen1;
+        Texture2D winscreen2;
+
         // Gambar Untuk Player
         public Texture2D kiribawah;
         public Texture2D kiriatas;
@@ -167,10 +171,10 @@ namespace GameEngine
             this.turn = turn;
         }
 
-        private void AddPlayer(Texture2D R0, Texture2D R1, Texture2D R2, Texture2D R3, Texture2D L0, Texture2D L1, Texture2D L2, Texture2D L3, Vector2 position)
+        private void AddPlayer(Texture2D S, Vector2 position, int team)
         {
             Player player = new Player();
-            player.Initialize(R0, R1, R2, R3, L0, L1, L2, L3, position);
+            player.Initialize(S, position, team);
             player.HealthInit(healthtxr);
             Players.Add(player);
         }
@@ -186,6 +190,8 @@ namespace GameEngine
 
             healthtxr = Content.Load<Texture2D>("HealthBar");
             Vector2 playerPosition = new Vector2(30, GraphicsDevice.Viewport.Height - 60);
+            Vector2 playerPosition2 = new Vector2(GraphicsDevice.Viewport.Width - 65, GraphicsDevice.Viewport.Height - 60);
+
 
             for (int i = 0; i < listTeam1.Count; i++)
             {
@@ -196,16 +202,16 @@ namespace GameEngine
                 switch (i)
                 {
                     case 0:
-                        AddPlayer(Content.Load<Texture2D>("400"), Content.Load<Texture2D>("401"), Content.Load<Texture2D>("402"), Content.Load<Texture2D>("403"), Content.Load<Texture2D>("410"), Content.Load<Texture2D>("411"), Content.Load<Texture2D>("412"), Content.Load<Texture2D>("413"), playerPosition);
+                        AddPlayer(Content.Load<Texture2D>("1"), playerPosition, 1);
                         break;
                     case 1:
-                        AddPlayer(Content.Load<Texture2D>("300"), Content.Load<Texture2D>("301"), Content.Load<Texture2D>("302"), Content.Load<Texture2D>("303"), Content.Load<Texture2D>("310"), Content.Load<Texture2D>("311"), Content.Load<Texture2D>("312"), Content.Load<Texture2D>("313"), playerPosition);
+                        AddPlayer(Content.Load<Texture2D>("2"), playerPosition + new Vector2(10, 0), 1);
                         break;
                     case 2:
-                        AddPlayer(Content.Load<Texture2D>("200"), Content.Load<Texture2D>("201"), Content.Load<Texture2D>("202"), Content.Load<Texture2D>("203"), Content.Load<Texture2D>("210"), Content.Load<Texture2D>("211"), Content.Load<Texture2D>("212"), Content.Load<Texture2D>("213"), playerPosition);
+                        AddPlayer(Content.Load<Texture2D>("3"), playerPosition + new Vector2(20, 0), 1);
                         break;
                     case 3:
-                        AddPlayer(Content.Load<Texture2D>("100"), Content.Load<Texture2D>("101"), Content.Load<Texture2D>("102"), Content.Load<Texture2D>("103"), Content.Load<Texture2D>("110"), Content.Load<Texture2D>("111"), Content.Load<Texture2D>("112"), Content.Load<Texture2D>("113"), playerPosition);
+                        AddPlayer(Content.Load<Texture2D>("4"), playerPosition + new Vector2(30, 0), 1);
                         break;
                 }
             }
@@ -218,16 +224,16 @@ namespace GameEngine
                 switch (i)
                 {
                     case 0:
-                        AddPlayer(Content.Load<Texture2D>("400"), Content.Load<Texture2D>("401"), Content.Load<Texture2D>("402"), Content.Load<Texture2D>("403"), Content.Load<Texture2D>("410"), Content.Load<Texture2D>("411"), Content.Load<Texture2D>("412"), Content.Load<Texture2D>("413"), playerPosition);
+                        AddPlayer(Content.Load<Texture2D>("5"), playerPosition2, 2);
                         break;
                     case 1:
-                        AddPlayer(Content.Load<Texture2D>("300"), Content.Load<Texture2D>("301"), Content.Load<Texture2D>("302"), Content.Load<Texture2D>("303"), Content.Load<Texture2D>("310"), Content.Load<Texture2D>("311"), Content.Load<Texture2D>("312"), Content.Load<Texture2D>("313"), playerPosition);
+                        AddPlayer(Content.Load<Texture2D>("6"), playerPosition2 - new Vector2(10, 0), 2);
                         break;
                     case 2:
-                        AddPlayer(Content.Load<Texture2D>("200"), Content.Load<Texture2D>("201"), Content.Load<Texture2D>("202"), Content.Load<Texture2D>("203"), Content.Load<Texture2D>("210"), Content.Load<Texture2D>("211"), Content.Load<Texture2D>("212"), Content.Load<Texture2D>("213"), playerPosition);
+                        AddPlayer(Content.Load<Texture2D>("7"), playerPosition2 - new Vector2(20, 0), 2);
                         break;
                     case 3:
-                        AddPlayer(Content.Load<Texture2D>("100"), Content.Load<Texture2D>("101"), Content.Load<Texture2D>("102"), Content.Load<Texture2D>("103"), Content.Load<Texture2D>("110"), Content.Load<Texture2D>("111"), Content.Load<Texture2D>("112"), Content.Load<Texture2D>("113"), playerPosition);
+                        AddPlayer(Content.Load<Texture2D>("8"), playerPosition2 - new Vector2(30, 0), 2);
                         break;
                 }
             }
@@ -235,6 +241,9 @@ namespace GameEngine
             // Load the parallaxing background
             bgLayer1.Initialize(Content, "bgLayer1", GraphicsDevice.Viewport.Width, -1);
             bgLayer2.Initialize(Content, "bgLayer2", GraphicsDevice.Viewport.Width, -2);
+            winscreen = Content.Load<Texture2D>("win");
+            winscreen1 = Content.Load<Texture2D>("team1");
+            winscreen2 = Content.Load<Texture2D>("team2");
 
             projectileTexture = Content.Load<Texture2D>("laser");
 
@@ -284,17 +293,30 @@ namespace GameEngine
             base.Update(gameTime);
         }
 
-        
+        public int CheckWinner()
+        {
+            Boolean Team1 = false, Team2 = false;
+            for (int i = 0; i < Players.Count; i++)
+            {
+                if ((Players[i].Team == 1) && (Players[i].Health > 0)) Team1 = true;
+                if ((Players[i].Team == 2) && (Players[i].Health > 0)) Team2 = true;
+            }
+            if (!Team1) return 2;
+            else if (!Team2) return 1;
+            else return 0;
+        }
 
-        private void Move(Player player, int direction /* 0 kanan, 1 kiri */)
+        private void Move(int player, int direction /* 0 kanan, 1 kiri */)
         {
             if (direction == 0) // kanan
             {
-                player.Position.X += playerMoveSpeed;
+                Players[player].Position.X += playerMoveSpeed;
+                Players[player].horizontal = 0;
             }
             else // kiri
             {
-                player.Position.X -= playerMoveSpeed;
+                Players[player].Position.X -= playerMoveSpeed;
+                Players[player].horizontal = 1;
             }
         }
 
@@ -350,40 +372,48 @@ namespace GameEngine
             {
                 if (turn[currIterate % listPlayers.Count] == PlayerNo)
                 {
-                    // Space
-                    if ((currentKeyboardState.IsKeyDown(Keys.Space)) && (previousKeyboardState.IsKeyUp(Keys.Space)))
+                    if (Players[PlayerNo].Health != 0)
                     {
-                        AddProjectile();
-                        peer.SendPosition(7);
-                        currIterate++;
-                    }
+                        // Space
+                        if ((currentKeyboardState.IsKeyDown(Keys.Space)) && (previousKeyboardState.IsKeyUp(Keys.Space)))
+                        {
+                            AddProjectile();
+                            peer.SendPosition(7);
+                            currIterate++;
+                        }
 
-                    // Use the Keyboard / Dpad
-                    if (currentKeyboardState.IsKeyDown(Keys.Left))
-                    {
-                        if (horizontal == 0) horizontal = 1;
-                        Move(Players[PlayerNo], 1);
-                        peer.SendPosition(-1);
+                        // Use the Keyboard / Dpad
+                        if (currentKeyboardState.IsKeyDown(Keys.Left))
+                        {
+                            if (horizontal == 0) horizontal = 1;
+                            Move(PlayerNo, 1);
+                            peer.SendPosition(-1);
+                        }
+                        if (currentKeyboardState.IsKeyDown(Keys.Right))
+                        {
+                            if (horizontal == 1) horizontal = 0;
+                            Move(PlayerNo, 0);
+                            peer.SendPosition(1);
+                        }
+                        if (currentKeyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up))
+                        {
+                            if (Players[PlayerNo].vertikal < 3) Players[PlayerNo].vertikal++;
+                            peer.SendPosition(3);
+                        }
+                        if (currentKeyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down))
+                        {
+                            if (Players[PlayerNo].vertikal > 0) Players[PlayerNo].vertikal--;
+                            peer.SendPosition(4);
+                        }
+                        // Make sure that the player does not go out of bounds
+                        Players[PlayerNo].Position.X = MathHelper.Clamp(Players[PlayerNo].Position.X, 0, GraphicsDevice.Viewport.Width + -Players[PlayerNo].Width);
+                        Players[PlayerNo].Position.Y = MathHelper.Clamp(Players[PlayerNo].Position.Y, 0, GraphicsDevice.Viewport.Height + -Players[PlayerNo].Height);
                     }
-                    if (currentKeyboardState.IsKeyDown(Keys.Right))
+                    else
                     {
-                        if (horizontal == 1) horizontal = 0;
-                        Move(Players[PlayerNo], 0);
-                        peer.SendPosition(1);
+                        currIterate++;
+                        peer.SendPosition(9);
                     }
-                    if (currentKeyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up))
-                    {
-                        if (vertikal < 3) vertikal++;
-                        peer.SendPosition(3);
-                    }
-                    if (currentKeyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down))
-                    {
-                        if (vertikal > 0) vertikal--;
-                        peer.SendPosition(4);
-                    }
-                    // Make sure that the player does not go out of bounds
-                    Players[PlayerNo].Position.X = MathHelper.Clamp(Players[PlayerNo].Position.X, 0, GraphicsDevice.Viewport.Width + -Players[PlayerNo].Width);
-                    Players[PlayerNo].Position.Y = MathHelper.Clamp(Players[PlayerNo].Position.Y, 0, GraphicsDevice.Viewport.Height + -Players[PlayerNo].Height);
                 }
             }
             catch (Exception ex)
@@ -405,20 +435,24 @@ namespace GameEngine
             if (state == -1)
             {
                 if (horizontal == 0) horizontal = 1;
-                Move(Players[playerNo], 1);
+                Move(playerNo, 1);
             }
             if (state == 1)
             {
                 if (horizontal == 1) horizontal = 0;
-                Move(Players[playerNo], 0);
+                Move(playerNo, 0);
             }
             if (state == 3)
             {
-                if (vertikal < 3) vertikal++;
+                if (Players[playerNo].vertikal < 3) Players[playerNo].vertikal++;
             }
             if (state == 4)
             {
-                if (vertikal > 0) vertikal--;
+                if (Players[playerNo].vertikal > 0) Players[playerNo].vertikal--;
+            }
+            if (state == 9)
+            {
+                currIterate++;
             }
             // Make sure that the player does not go out of bounds
             Players[playerNo].Position.X = MathHelper.Clamp(Players[playerNo].Position.X, 0, GraphicsDevice.Viewport.Width + -Players[playerNo].Width);
@@ -441,15 +475,14 @@ namespace GameEngine
                 {
                     for (int j = 0; j < Players.Count; j++)
                     {
-                        if (j != projectiles[i].Owner)
+                        if ((j != projectiles[i].Owner) && (Players[j].Team != projectiles[i].Team))
                         {
                             if (Tabrakan(Players[j], projectiles[i]))
                             {
-                                projectiles[i].Active = false;
-                                Players[j].GetDamage();
-                                if (Players[j].Health <= 0)
+                                if (Players[j].Health > 0)
                                 {
-                                    Players.RemoveAt(j);
+                                    projectiles[i].Active = false;
+                                    Players[j].GetDamage();
                                 }
                             }
                         }
@@ -477,17 +510,32 @@ namespace GameEngine
             bgLayer1.Draw(spriteBatch);
             bgLayer2.Draw(spriteBatch);
 
-            // Draw the Player
-            for (int i = 0; i < Players.Count; i++)
+            int winner = CheckWinner();
+            if (winner == 0)
             {
-                Players[i].Draw(spriteBatch);
-                Players[i].DrawHealth(spriteBatch);
-            }
+                // Draw the Player
+                for (int i = 0; i < Players.Count; i++)
+                {
+                    if (Players[i].Health > 0)
+                    {
+                        Players[i].Draw(spriteBatch);
+                        Players[i].DrawHealth(spriteBatch);
+                    }
+                }
 
-            // Draw the Projectiles
-            for (int i = 0; i < projectiles.Count; i++)
+                // Draw the Projectiles
+                for (int i = 0; i < projectiles.Count; i++)
+                {
+                    projectiles[i].Draw(spriteBatch);
+                }
+            }
+            else if (winner == 1)
             {
-                projectiles[i].Draw(spriteBatch);
+                spriteBatch.Draw(winscreen1, Vector2.Zero, Color.White);
+            }
+            else
+            {
+                spriteBatch.Draw(winscreen2, Vector2.Zero, Color.White);
             }
 
             // Stop drawing
@@ -549,7 +597,7 @@ namespace GameEngine
                 }
 
                 Projectile projectile = new Projectile();
-                projectile.Initialize(GraphicsDevice.Viewport, projectileTexture, position, horizontal, vertikal, PlayerNo);
+                projectile.Initialize(GraphicsDevice.Viewport, projectileTexture, position, horizontal, vertikal, Players[turn[currIterate % listPlayers.Count]].Team, turn[currIterate % listPlayers.Count]);
                 projectiles.Add(projectile);
             }
         }
