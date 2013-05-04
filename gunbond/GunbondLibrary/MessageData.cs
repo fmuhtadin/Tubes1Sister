@@ -43,6 +43,8 @@ namespace GunbondLibrary
         public List<IPAddress> listIPTeam1;
         public List<IPAddress> listIPTeam2;
         public int state;
+        public int packetCounter;
+        public List<int> turn;
 
         public MessageData()
         {
@@ -62,9 +64,11 @@ namespace GunbondLibrary
             team1Count = 0;
             team2Count = 0;
             state = 0;
+            packetCounter = 0;
             listIPAddress = new List<IPAddress>();
             listIPTeam1 = new List<IPAddress>();
             listIPTeam2 = new List<IPAddress>();
+            turn = new List<int>();
         }
 
         public MessageData(byte[] data)
@@ -74,6 +78,7 @@ namespace GunbondLibrary
             listIPAddress = new List<IPAddress>();
             listIPTeam1 = new List<IPAddress>();
             listIPTeam2 = new List<IPAddress>();
+            turn = new List<int>();
             this.pstr = Encoding.UTF8.GetString(data, 0, 11);
             for (int i = 0; i<reservedBytes.Length; i++) {
                 this.reservedBytes[i] = data[10+i];
@@ -94,10 +99,17 @@ namespace GunbondLibrary
                         peerId = new IPAddress(next);
                     }
                     break;
+                case 181:
+                    next = new byte[4];
+                    Array.Copy(data, 20, next, 0, 4);
+                    peerId = new IPAddress(next);
+                    packetCounter = BitConverter.ToInt32(data, 24);
+                    break;
                 case 182:
                     next = new byte[4];
                     Array.Copy(data,20,next,0,4);
                     peerId = new IPAddress(next);
+                    packetCounter = BitConverter.ToInt32(data, 24);
                     break;
                 case 255:
                     next = new byte[4];
@@ -161,21 +173,21 @@ namespace GunbondLibrary
                     int count = 0;
                     for (int i = 0; i < ipCount; i++)
                     {
-                        Array.Copy(data, 32 + i * 4, next, 0, 4);
+                        Array.Copy(data, 32 + count * 4, next, 0, 4);
                         IPAddress tmpIP = new IPAddress(next);
                         listIPAddress.Add(tmpIP);
                         count++;
                     }
                     for (int i = 0; i < team1Count; i++)
                     {
-                        Array.Copy(data, (32 + count * 4) + i * 4, next, 0, 4);
+                        Array.Copy(data, 32 + count * 4, next, 0, 4);
                         IPAddress tmpIP = new IPAddress(next);
                         listIPTeam1.Add(tmpIP);
                         count++;
                     }
                     for (int i = 0; i < team2Count; i++)
                     {
-                        Array.Copy(data, (32 + count * 4) + i * 4, next, 0, 4);
+                        Array.Copy(data, 32 + count * 4, next, 0, 4);
                         IPAddress tmpIP = new IPAddress(next);
                         listIPTeam2.Add(tmpIP);
                         count++;
@@ -186,6 +198,17 @@ namespace GunbondLibrary
                     Array.Copy(data, 20, next, 0, 4);
                     peerId = new IPAddress(next);
                     this.state = BitConverter.ToInt32(data, 24);
+                    this.packetCounter = BitConverter.ToInt32(data, 28);
+                    break;
+                case 130:
+                    next = new byte[4];
+                    this.maxPlayerNum = BitConverter.ToInt32(data, 20);
+                    this.packetCounter = BitConverter.ToInt32(data, 24);
+                    for (int i = 0; i < maxPlayerNum; i++)
+                    {
+                        int tmp = BitConverter.ToInt32(data, 28 + i * 4);
+                        turn.Add(tmp);
+                    }
                     break;
             }
 
@@ -207,8 +230,13 @@ namespace GunbondLibrary
                         retByte.AddRange(peerId.GetAddressBytes());
                     }
                     break;
+                case 181:
+                    retByte.AddRange(peerId.GetAddressBytes());
+                    retByte.AddRange(BitConverter.GetBytes(packetCounter));
+                    break;
                 case 182:
                     retByte.AddRange(peerId.GetAddressBytes());
+                    retByte.AddRange(BitConverter.GetBytes(packetCounter));
                     break;
                 case 255:
                     retByte.AddRange(peerId.GetAddressBytes());
@@ -267,6 +295,15 @@ namespace GunbondLibrary
                 case 70:
                     retByte.AddRange(peerId.GetAddressBytes());
                     retByte.AddRange(BitConverter.GetBytes(state));
+                    retByte.AddRange(BitConverter.GetBytes(packetCounter));
+                    break;
+                case 130:
+                    retByte.AddRange(BitConverter.GetBytes(maxPlayerNum));
+                    retByte.AddRange(BitConverter.GetBytes(packetCounter));
+                    for (int i = 0; i < maxPlayerNum; i++)
+                    {
+                        retByte.AddRange(BitConverter.GetBytes(turn[i]));
+                    }
                     break;
             }
             return retByte.ToArray();

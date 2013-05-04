@@ -2,213 +2,6 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>bgLayer1.png</Source>
-      <Name>bgLayer1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\bgLayer1.xnb</Output>
-      <Time>2013-05-03T09:05:10+07:00</Time>
-    </Item>
-    <Item>
-      <Source>bgLayer2.png</Source>
-      <Name>bgLayer2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\bgLayer2.xnb</Output>
-      <Time>2013-05-03T09:05:34+07:00</Time>
-    </Item>
-    <Item>
-      <Source>endMenu.png</Source>
-      <Name>endMenu</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\endMenu.xnb</Output>
-      <Time>2011-04-01T09:42:38+07:00</Time>
-    </Item>
-    <Item>
-      <Source>enemy.PNG</Source>
-      <Name>enemy</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\enemy.xnb</Output>
-      <Time>2013-05-03T10:39:16+07:00</Time>
-    </Item>
-    <Item>
-      <Source>explosion.png</Source>
-      <Name>explosion</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\explosion.xnb</Output>
-      <Time>2011-04-01T09:42:38+07:00</Time>
-    </Item>
-    <Item>
-      <Source>kananatas.png</Source>
-      <Name>kananatas</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\kananatas.xnb</Output>
-      <Time>2013-05-03T09:29:36+07:00</Time>
-    </Item>
-    <Item>
-      <Source>kananbawah.png</Source>
-      <Name>kananbawah</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\kananbawah.xnb</Output>
-      <Time>2013-05-03T09:29:10+07:00</Time>
-    </Item>
-    <Item>
-      <Source>kiriatas.png</Source>
-      <Name>kiriatas</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\kiriatas.xnb</Output>
-      <Time>2013-05-03T09:28:32+07:00</Time>
-    </Item>
-    <Item>
-      <Source>kiribawah.png</Source>
-      <Name>kiribawah</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\kiribawah.xnb</Output>
-      <Time>2013-05-03T09:28:08+07:00</Time>
-    </Item>
-    <Item>
-      <Source>laser.png</Source>
-      <Name>laser</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\laser.xnb</Output>
-      <Time>2013-05-03T13:25:42+07:00</Time>
-    </Item>
-    <Item>
-      <Source>laser1.png</Source>
-      <Name>laser1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\laser1.xnb</Output>
-      <Time>2011-04-01T09:42:38+07:00</Time>
-    </Item>
-    <Item>
-      <Source>mainbackground.png</Source>
-      <Name>mainbackground</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\mainbackground.xnb</Output>
-      <Time>2013-05-03T09:10:02+07:00</Time>
-    </Item>
-    <Item>
-      <Source>mainMenu.png</Source>
-      <Name>mainMenu</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\mainMenu.xnb</Output>
-      <Time>2011-04-01T09:42:38+07:00</Time>
-    </Item>
-    <Item>
-      <Source>mine.png</Source>
-      <Name>mine</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\mine.xnb</Output>
-      <Time>2011-04-01T09:42:38+07:00</Time>
-    </Item>
-    <Item>
-      <Source>mineAnimation.png</Source>
-      <Name>mineAnimation</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\mineAnimation.xnb</Output>
-      <Time>2011-04-01T09:42:38+07:00</Time>
-    </Item>
-    <Item>
-      <Source>player 1.png</Source>
-      <Name>player 1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\player 1.xnb</Output>
-      <Time>2011-04-01T09:42:38+07:00</Time>
-    </Item>
-    <Item>
-      <Source>player.png</Source>
-      <Name>player</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\player.xnb</Output>
-      <Time>2013-05-03T09:19:52+07:00</Time>
-    </Item>
-    <Item>
-      <Source>shipAnimation.png</Source>
-      <Name>shipAnimation</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\shipAnimation.xnb</Output>
-      <Time>2011-04-01T09:42:38+07:00</Time>
-    </Item>
-    <Item>
-      <Source>kananatas2.PNG</Source>
-      <Name>kananatas2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\kananatas2.xnb</Output>
-      <Time>2013-05-03T17:04:18+07:00</Time>
-    </Item>
-    <Item>
-      <Source>kananbawah2.PNG</Source>
-      <Name>kananbawah2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\kananbawah2.xnb</Output>
-      <Time>2013-05-03T17:06:18+07:00</Time>
-    </Item>
-    <Item>
-      <Source>kiriatas2.PNG</Source>
-      <Name>kiriatas2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\kiriatas2.xnb</Output>
-      <Time>2013-05-03T17:07:58+07:00</Time>
-    </Item>
-    <Item>
-      <Source>kiribawah2.PNG</Source>
-      <Name>kiribawah2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\kiribawah2.xnb</Output>
-      <Time>2013-05-03T17:07:20+07:00</Time>
-    </Item>
-    <Item>
-      <Source>gameFont.spritefont</Source>
-      <Name>gameFont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\gameFont.xnb</Output>
-      <Time>2011-04-01T09:42:38+07:00</Time>
-    </Item>
-    <Item>
       <Source>Sound\explosion.wav</Source>
       <Name>Sound\explosion</Name>
       <Importer>WavImporter</Importer>
@@ -244,6 +37,348 @@
       <Options>None</Options>
       <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\Sound\menuMusic.xnb</Output>
       <Extra>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\Sound\menuMusic.wma</Extra>
+      <Time>2011-04-01T09:42:38+07:00</Time>
+    </Item>
+    <Item>
+      <Source>100.PNG</Source>
+      <Name>100</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\100.xnb</Output>
+      <Time>2013-05-03T22:19:10+07:00</Time>
+    </Item>
+    <Item>
+      <Source>101.PNG</Source>
+      <Name>101</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\101.xnb</Output>
+      <Time>2013-05-03T22:19:26+07:00</Time>
+    </Item>
+    <Item>
+      <Source>102.PNG</Source>
+      <Name>102</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\102.xnb</Output>
+      <Time>2013-05-03T22:19:42+07:00</Time>
+    </Item>
+    <Item>
+      <Source>103.PNG</Source>
+      <Name>103</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\103.xnb</Output>
+      <Time>2013-05-03T22:24:22+07:00</Time>
+    </Item>
+    <Item>
+      <Source>110.PNG</Source>
+      <Name>110</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\110.xnb</Output>
+      <Time>2013-05-03T22:20:54+07:00</Time>
+    </Item>
+    <Item>
+      <Source>111.PNG</Source>
+      <Name>111</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\111.xnb</Output>
+      <Time>2013-05-03T22:21:12+07:00</Time>
+    </Item>
+    <Item>
+      <Source>112.PNG</Source>
+      <Name>112</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\112.xnb</Output>
+      <Time>2013-05-03T22:21:24+07:00</Time>
+    </Item>
+    <Item>
+      <Source>113.PNG</Source>
+      <Name>113</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\113.xnb</Output>
+      <Time>2013-05-03T22:21:58+07:00</Time>
+    </Item>
+    <Item>
+      <Source>200.PNG</Source>
+      <Name>200</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\200.xnb</Output>
+      <Time>2013-05-03T22:25:54+07:00</Time>
+    </Item>
+    <Item>
+      <Source>201.PNG</Source>
+      <Name>201</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\201.xnb</Output>
+      <Time>2013-05-03T22:26:14+07:00</Time>
+    </Item>
+    <Item>
+      <Source>202.PNG</Source>
+      <Name>202</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\202.xnb</Output>
+      <Time>2013-05-03T22:26:26+07:00</Time>
+    </Item>
+    <Item>
+      <Source>203.PNG</Source>
+      <Name>203</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\203.xnb</Output>
+      <Time>2013-05-03T22:26:36+07:00</Time>
+    </Item>
+    <Item>
+      <Source>210.PNG</Source>
+      <Name>210</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\210.xnb</Output>
+      <Time>2013-05-03T22:26:52+07:00</Time>
+    </Item>
+    <Item>
+      <Source>211.PNG</Source>
+      <Name>211</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\211.xnb</Output>
+      <Time>2013-05-03T22:27:02+07:00</Time>
+    </Item>
+    <Item>
+      <Source>212.PNG</Source>
+      <Name>212</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\212.xnb</Output>
+      <Time>2013-05-03T22:27:12+07:00</Time>
+    </Item>
+    <Item>
+      <Source>213.PNG</Source>
+      <Name>213</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\213.xnb</Output>
+      <Time>2013-05-03T22:27:26+07:00</Time>
+    </Item>
+    <Item>
+      <Source>300.PNG</Source>
+      <Name>300</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\300.xnb</Output>
+      <Time>2013-05-03T22:29:26+07:00</Time>
+    </Item>
+    <Item>
+      <Source>301.PNG</Source>
+      <Name>301</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\301.xnb</Output>
+      <Time>2013-05-03T22:29:42+07:00</Time>
+    </Item>
+    <Item>
+      <Source>302.PNG</Source>
+      <Name>302</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\302.xnb</Output>
+      <Time>2013-05-03T22:29:50+07:00</Time>
+    </Item>
+    <Item>
+      <Source>303.PNG</Source>
+      <Name>303</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\303.xnb</Output>
+      <Time>2013-05-03T22:30:02+07:00</Time>
+    </Item>
+    <Item>
+      <Source>310.PNG</Source>
+      <Name>310</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\310.xnb</Output>
+      <Time>2013-05-03T22:30:16+07:00</Time>
+    </Item>
+    <Item>
+      <Source>311.PNG</Source>
+      <Name>311</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\311.xnb</Output>
+      <Time>2013-05-03T22:30:42+07:00</Time>
+    </Item>
+    <Item>
+      <Source>312.PNG</Source>
+      <Name>312</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\312.xnb</Output>
+      <Time>2013-05-03T22:30:54+07:00</Time>
+    </Item>
+    <Item>
+      <Source>313.PNG</Source>
+      <Name>313</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\313.xnb</Output>
+      <Time>2013-05-03T22:31:02+07:00</Time>
+    </Item>
+    <Item>
+      <Source>400.PNG</Source>
+      <Name>400</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\400.xnb</Output>
+      <Time>2013-05-03T22:42:02+07:00</Time>
+    </Item>
+    <Item>
+      <Source>401.PNG</Source>
+      <Name>401</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\401.xnb</Output>
+      <Time>2013-05-03T22:42:14+07:00</Time>
+    </Item>
+    <Item>
+      <Source>402.PNG</Source>
+      <Name>402</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\402.xnb</Output>
+      <Time>2013-05-03T22:42:26+07:00</Time>
+    </Item>
+    <Item>
+      <Source>403.PNG</Source>
+      <Name>403</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\403.xnb</Output>
+      <Time>2013-05-03T22:42:36+07:00</Time>
+    </Item>
+    <Item>
+      <Source>410.PNG</Source>
+      <Name>410</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\410.xnb</Output>
+      <Time>2013-05-03T22:42:48+07:00</Time>
+    </Item>
+    <Item>
+      <Source>411.PNG</Source>
+      <Name>411</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\411.xnb</Output>
+      <Time>2013-05-03T22:43:04+07:00</Time>
+    </Item>
+    <Item>
+      <Source>412.PNG</Source>
+      <Name>412</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\412.xnb</Output>
+      <Time>2013-05-03T22:43:40+07:00</Time>
+    </Item>
+    <Item>
+      <Source>413.PNG</Source>
+      <Name>413</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\413.xnb</Output>
+      <Time>2013-05-03T22:43:52+07:00</Time>
+    </Item>
+    <Item>
+      <Source>HealthBar.png</Source>
+      <Name>HealthBar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\HealthBar.xnb</Output>
+      <Time>2013-05-03T23:53:22+07:00</Time>
+    </Item>
+    <Item>
+      <Source>bgLayer1.png</Source>
+      <Name>bgLayer1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\bgLayer1.xnb</Output>
+      <Time>2013-05-03T20:34:58+07:00</Time>
+    </Item>
+    <Item>
+      <Source>bgLayer2.png</Source>
+      <Name>bgLayer2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\bgLayer2.xnb</Output>
+      <Time>2013-05-03T20:34:30+07:00</Time>
+    </Item>
+    <Item>
+      <Source>laser.png</Source>
+      <Name>laser</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\laser.xnb</Output>
+      <Time>2013-05-03T21:31:22+07:00</Time>
+    </Item>
+    <Item>
+      <Source>mainbackground.png</Source>
+      <Name>mainbackground</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\mainbackground.xnb</Output>
+      <Time>2013-05-03T20:34:02+07:00</Time>
+    </Item>
+    <Item>
+      <Source>gameFont.spritefont</Source>
+      <Name>gameFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Documents\My Documents\Kuliah\Semester 6\IF3056 Sistem Terdistribusi\tubes 2 sister\Tubes1Sister\gunbond\bin\Debug\Content\gameFont.xnb</Output>
       <Time>2011-04-01T09:42:38+07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>

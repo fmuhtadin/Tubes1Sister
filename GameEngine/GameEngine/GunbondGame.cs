@@ -14,6 +14,7 @@ using System.Net;
 using System.Text;
 using Microsoft.Xna.Framework.Input.Touch;
 using GunbondLibrary;
+using System.Threading;
 
 namespace GameEngine
 {
@@ -61,6 +62,7 @@ namespace GameEngine
 
         Texture2D projectileTexture;
         List<Projectile> projectiles;
+        public Texture2D healthtxr;
 
         //Network
         IPeer peer;
@@ -68,14 +70,17 @@ namespace GameEngine
         List<IPAddress> listTeam1;
         List<IPAddress> listTeam2;
         Dictionary<IPAddress, int> listPlayers;
+        int currIterate;
+        List<int> turn;
 
         // The rate of fire of the player laser
         TimeSpan fireTime;
-        TimeSpan previousFireTime;
 
         public GunbondGame(IPeer inpeer)
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferHeight = 240;
+            graphics.PreferredBackBufferWidth = 800;
             Content.RootDirectory = "Content";
             peer = inpeer;
         }
@@ -106,6 +111,21 @@ namespace GameEngine
                 listPlayers.Add(listTeam2[i], count);
                 count++;
             }
+            turn = new List<int>();
+            if (localIP.Equals(listTeam1[0]))
+            {
+                RandomizeTurn();
+                Thread.Sleep(3000);
+                SendTurnOrder();
+            }
+            else
+            {
+                while (turn.Count == 0)
+                {
+
+                }
+            }
+            currIterate = 0;
 
             // Set a constant player move speed
             playerMoveSpeed = 8.0f;
@@ -124,9 +144,34 @@ namespace GameEngine
             base.Initialize();
         }
 
-        private void AddPlayer(Texture2D image,Vector2 position){
+        private void RandomizeTurn()
+        {
+            Random rand = new Random();
+            int tmp;
+            while (turn.Count < listPlayers.Count) {
+                tmp = rand.Next(listPlayers.Count);
+                if (!turn.Contains(tmp))
+                {
+                    turn.Add(tmp);
+                }
+            }
+        }
+
+        private void SendTurnOrder()
+        {
+            peer.SendTurnOrder(turn);
+        }
+
+        public void UpdateTurnOrder(List<int> turn) 
+        {
+            this.turn = turn;
+        }
+
+        private void AddPlayer(Texture2D R0, Texture2D R1, Texture2D R2, Texture2D R3, Texture2D L0, Texture2D L1, Texture2D L2, Texture2D L3, Vector2 position)
+        {
             Player player = new Player();
-            player.Initialize(image, position);
+            player.Initialize(R0, R1, R2, R3, L0, L1, L2, L3, position);
+            player.HealthInit(healthtxr);
             Players.Add(player);
         }
 
@@ -138,46 +183,55 @@ namespace GameEngine
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            // TODO: use this.Content to load your game content here
-            // Load the player resources 
-            Vector2 playerPosition = new Vector2(130, GraphicsDevice.Viewport.Height - 119);
-            kiriatas = Content.Load<Texture2D>("kiriatas");
-            kiribawah = Content.Load<Texture2D>("kiribawah");
-            kananatas = Content.Load<Texture2D>("kananatas");
-            kananbawah = Content.Load<Texture2D>("kananbawah");
-            kiriatas2 = Content.Load<Texture2D>("kiriatas2");
-            kiribawah2 = Content.Load<Texture2D>("kiribawah2");
-            kananatas2 = Content.Load<Texture2D>("kananatas2");
-            kananbawah2 = Content.Load<Texture2D>("kananbawah2");
+
+            healthtxr = Content.Load<Texture2D>("HealthBar");
+            Vector2 playerPosition = new Vector2(30, GraphicsDevice.Viewport.Height - 60);
 
             for (int i = 0; i < listTeam1.Count; i++)
             {
                 if (listTeam1[i].Equals(localIP))
                 {
-                    AddPlayer(kananbawah, new Vector2(10f + 50*i, playerPosition.Y));
-                    PlayerNo = Players.Count - 1;
+                    PlayerNo = Players.Count;
                 }
-                else
+                switch (i)
                 {
-                    AddPlayer(Content.Load<Texture2D>("enemy"), new Vector2(10f + 50 * i, playerPosition.Y));
+                    case 0:
+                        AddPlayer(Content.Load<Texture2D>("400"), Content.Load<Texture2D>("401"), Content.Load<Texture2D>("402"), Content.Load<Texture2D>("403"), Content.Load<Texture2D>("410"), Content.Load<Texture2D>("411"), Content.Load<Texture2D>("412"), Content.Load<Texture2D>("413"), playerPosition);
+                        break;
+                    case 1:
+                        AddPlayer(Content.Load<Texture2D>("300"), Content.Load<Texture2D>("301"), Content.Load<Texture2D>("302"), Content.Load<Texture2D>("303"), Content.Load<Texture2D>("310"), Content.Load<Texture2D>("311"), Content.Load<Texture2D>("312"), Content.Load<Texture2D>("313"), playerPosition);
+                        break;
+                    case 2:
+                        AddPlayer(Content.Load<Texture2D>("200"), Content.Load<Texture2D>("201"), Content.Load<Texture2D>("202"), Content.Load<Texture2D>("203"), Content.Load<Texture2D>("210"), Content.Load<Texture2D>("211"), Content.Load<Texture2D>("212"), Content.Load<Texture2D>("213"), playerPosition);
+                        break;
+                    case 3:
+                        AddPlayer(Content.Load<Texture2D>("100"), Content.Load<Texture2D>("101"), Content.Load<Texture2D>("102"), Content.Load<Texture2D>("103"), Content.Load<Texture2D>("110"), Content.Load<Texture2D>("111"), Content.Load<Texture2D>("112"), Content.Load<Texture2D>("113"), playerPosition);
+                        break;
                 }
             }
             for (int i = 0; i < listTeam2.Count; i++)
             {
                 if (listTeam2[i].Equals(localIP))
                 {
-                    AddPlayer(kananbawah, new Vector2(GraphicsDevice.Viewport.Width - 10f + 50 * i, playerPosition.Y));
-                    PlayerNo = Players.Count - 1;
+                    PlayerNo = Players.Count;
                 }
-                else
+                switch (i)
                 {
-                    AddPlayer(Content.Load<Texture2D>("enemy"), new Vector2(GraphicsDevice.Viewport.Width -  10f + 50 * i, playerPosition.Y));
+                    case 0:
+                        AddPlayer(Content.Load<Texture2D>("400"), Content.Load<Texture2D>("401"), Content.Load<Texture2D>("402"), Content.Load<Texture2D>("403"), Content.Load<Texture2D>("410"), Content.Load<Texture2D>("411"), Content.Load<Texture2D>("412"), Content.Load<Texture2D>("413"), playerPosition);
+                        break;
+                    case 1:
+                        AddPlayer(Content.Load<Texture2D>("300"), Content.Load<Texture2D>("301"), Content.Load<Texture2D>("302"), Content.Load<Texture2D>("303"), Content.Load<Texture2D>("310"), Content.Load<Texture2D>("311"), Content.Load<Texture2D>("312"), Content.Load<Texture2D>("313"), playerPosition);
+                        break;
+                    case 2:
+                        AddPlayer(Content.Load<Texture2D>("200"), Content.Load<Texture2D>("201"), Content.Load<Texture2D>("202"), Content.Load<Texture2D>("203"), Content.Load<Texture2D>("210"), Content.Load<Texture2D>("211"), Content.Load<Texture2D>("212"), Content.Load<Texture2D>("213"), playerPosition);
+                        break;
+                    case 3:
+                        AddPlayer(Content.Load<Texture2D>("100"), Content.Load<Texture2D>("101"), Content.Load<Texture2D>("102"), Content.Load<Texture2D>("103"), Content.Load<Texture2D>("110"), Content.Load<Texture2D>("111"), Content.Load<Texture2D>("112"), Content.Load<Texture2D>("113"), playerPosition);
+                        break;
                 }
             }
-            //AddPlayer(kananbawah, playerPosition);
 
-            //AddPlayer(Content.Load<Texture2D>("enemy"), new Vector2(10f , GraphicsDevice.Viewport.Height - Players[0].Height));
-            
             // Load the parallaxing background
             bgLayer1.Initialize(Content, "bgLayer1", GraphicsDevice.Viewport.Width, -1);
             bgLayer2.Initialize(Content, "bgLayer2", GraphicsDevice.Viewport.Width, -2);
@@ -230,45 +284,7 @@ namespace GameEngine
             base.Update(gameTime);
         }
 
-        private void NewSprite(int Player,int horizontal,int vertical)
-        {
-            if (horizontal == 0) // Kanan
-            {
-                switch (vertikal)
-                {
-                    case 0: // bawah 2
-                        Players[Player].PlayerTexture = kananbawah2;
-                        break;
-                    case 1: // bawah
-                        Players[Player].PlayerTexture = kananbawah;
-                        break;
-                    case 2: // atas
-                        Players[Player].PlayerTexture = kananatas;
-                        break;
-                    default: // atas 2
-                        Players[Player].PlayerTexture = kananatas2;
-                        break;
-                }
-            }
-            else
-            {
-                switch (vertikal)
-                {
-                    case 0: // bawah 2
-                        Players[Player].PlayerTexture = kiribawah2;
-                        break;
-                    case 1: // bawah
-                        Players[Player].PlayerTexture = kiribawah;
-                        break;
-                    case 2: // atas
-                        Players[Player].PlayerTexture = kiriatas;
-                        break;
-                    default: // atas 2
-                        Players[Player].PlayerTexture = kiriatas2;
-                        break;
-                }
-            }
-        }
+        
 
         private void Move(Player player, int direction /* 0 kanan, 1 kiri */)
         {
@@ -287,6 +303,38 @@ namespace GameEngine
             HandleOtherPlayerMovement(listPlayers[otherIP], state);
         }
 
+        public void UpdateDeadPeer(IPAddress ip)
+        {
+            for (int i = 0; i < listTeam1.Count; i++)
+            {
+                if (listTeam1[i].Equals(ip)) 
+                {
+                    listTeam1.RemoveAt(i);
+                }
+            }
+            for (int i = 0; i < listTeam2.Count; i++)
+            {
+                if (listTeam2[i].Equals(ip))
+                {
+                    listTeam2.RemoveAt(i);
+                }
+            }
+            int index = listPlayers[ip];
+            foreach (KeyValuePair<IPAddress, int> tuple in listPlayers)
+            {
+                if (tuple.Value == index)
+                {
+                    listPlayers.Remove(tuple.Key);
+                }
+                else if (tuple.Value > index)
+                {
+                    listPlayers.Remove(tuple.Key);
+                    listPlayers.Add(tuple.Key, tuple.Value - 1);
+                }
+            }
+        }
+
+
         private void UpdatePlayer(GameTime gameTime)
         {
             for (int i = 0; i < Players.Count; i++)
@@ -298,51 +346,59 @@ namespace GameEngine
 
         private void HandlePlayerMovement()
         {
-            // Space
-            if ((currentKeyboardState.IsKeyDown(Keys.Space)) && (previousKeyboardState.IsKeyUp(Keys.Space)))
+            try
             {
-                AddProjectile(Players[PlayerNo], horizontal, vertikal);
-                peer.SendPosition(0);
-            }
+                if (turn[currIterate % listPlayers.Count] == PlayerNo)
+                {
+                    // Space
+                    if ((currentKeyboardState.IsKeyDown(Keys.Space)) && (previousKeyboardState.IsKeyUp(Keys.Space)))
+                    {
+                        AddProjectile();
+                        peer.SendPosition(7);
+                        currIterate++;
+                    }
 
-            // Use the Keyboard / Dpad
-            if (currentKeyboardState.IsKeyDown(Keys.Left))
-            {
-                if (horizontal == 0) horizontal = 1;
-                Move(Players[PlayerNo], 1);
-                NewSprite(PlayerNo, horizontal, vertikal);
-                peer.SendPosition(-1);
+                    // Use the Keyboard / Dpad
+                    if (currentKeyboardState.IsKeyDown(Keys.Left))
+                    {
+                        if (horizontal == 0) horizontal = 1;
+                        Move(Players[PlayerNo], 1);
+                        peer.SendPosition(-1);
+                    }
+                    if (currentKeyboardState.IsKeyDown(Keys.Right))
+                    {
+                        if (horizontal == 1) horizontal = 0;
+                        Move(Players[PlayerNo], 0);
+                        peer.SendPosition(1);
+                    }
+                    if (currentKeyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up))
+                    {
+                        if (vertikal < 3) vertikal++;
+                        peer.SendPosition(3);
+                    }
+                    if (currentKeyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down))
+                    {
+                        if (vertikal > 0) vertikal--;
+                        peer.SendPosition(4);
+                    }
+                    // Make sure that the player does not go out of bounds
+                    Players[PlayerNo].Position.X = MathHelper.Clamp(Players[PlayerNo].Position.X, 0, GraphicsDevice.Viewport.Width + -Players[PlayerNo].Width);
+                    Players[PlayerNo].Position.Y = MathHelper.Clamp(Players[PlayerNo].Position.Y, 0, GraphicsDevice.Viewport.Height + -Players[PlayerNo].Height);
+                }
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Right))
+            catch (Exception ex)
             {
-                if (horizontal == 1) horizontal = 0;
-                Move(Players[PlayerNo], 0);
-                NewSprite(PlayerNo, horizontal, vertikal);
-                peer.SendPosition(1);
+                System.Console.WriteLine(ex.Message);
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up))
-            {
-                if (vertikal < 3) vertikal++;
-                NewSprite(PlayerNo, horizontal, vertikal);
-                peer.SendPosition(3);
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down))
-            {
-                if (vertikal > 0) vertikal--;
-                NewSprite(PlayerNo, horizontal, vertikal);
-                peer.SendPosition(4);
-            }
-            // Make sure that the player does not go out of bounds
-            Players[PlayerNo].Position.X = MathHelper.Clamp(Players[PlayerNo].Position.X, 0, GraphicsDevice.Viewport.Width + -Players[PlayerNo].Width);
-            Players[PlayerNo].Position.Y = MathHelper.Clamp(Players[PlayerNo].Position.Y, 0, GraphicsDevice.Viewport.Height + -Players[PlayerNo].Height);
         }
 
         private void HandleOtherPlayerMovement(int playerNo, int state)
         {
             // Space
-            if (state == 0)
+            if (state == 7)
             {
-                AddProjectile(Players[playerNo], horizontal, vertikal);
+                AddProjectile();
+                currIterate++;
             }
 
             // Use the Keyboard / Dpad
@@ -350,23 +406,19 @@ namespace GameEngine
             {
                 if (horizontal == 0) horizontal = 1;
                 Move(Players[playerNo], 1);
-                NewSprite(playerNo, horizontal, vertikal);
             }
             if (state == 1)
             {
                 if (horizontal == 1) horizontal = 0;
                 Move(Players[playerNo], 0);
-                NewSprite(playerNo, horizontal, vertikal);
             }
             if (state == 3)
             {
                 if (vertikal < 3) vertikal++;
-                NewSprite(playerNo, horizontal, vertikal);
             }
             if (state == 4)
             {
                 if (vertikal > 0) vertikal--;
-                NewSprite(playerNo, horizontal, vertikal);
             }
             // Make sure that the player does not go out of bounds
             Players[playerNo].Position.X = MathHelper.Clamp(Players[playerNo].Position.X, 0, GraphicsDevice.Viewport.Width + -Players[playerNo].Width);
@@ -376,7 +428,8 @@ namespace GameEngine
         private void UpdateProjectiles()
         {
             // Update the Projectiles
-            for (int i = projectiles.Count - 1; i >= 0; i--)
+            int i = projectiles.Count - 1;
+            while (i >= 0)
             {
                 projectiles[i].Update();
 
@@ -384,6 +437,25 @@ namespace GameEngine
                 {
                     projectiles.RemoveAt(i);
                 }
+                else
+                {
+                    for (int j = 0; j < Players.Count; j++)
+                    {
+                        if (j != projectiles[i].Owner)
+                        {
+                            if (Tabrakan(Players[j], projectiles[i]))
+                            {
+                                projectiles[i].Active = false;
+                                Players[j].GetDamage();
+                                if (Players[j].Health <= 0)
+                                {
+                                    Players.RemoveAt(j);
+                                }
+                            }
+                        }
+                    }
+                }
+                i--;
             }
         }
 
@@ -409,6 +481,7 @@ namespace GameEngine
             for (int i = 0; i < Players.Count; i++)
             {
                 Players[i].Draw(spriteBatch);
+                Players[i].DrawHealth(spriteBatch);
             }
 
             // Draw the Projectiles
@@ -423,12 +496,62 @@ namespace GameEngine
             base.Draw(gameTime);
         }
 
-        private void AddProjectile(Player P,int horizontal, int vertikal)
+        private Boolean Tabrakan(Player P1, Projectile P2)
         {
-            Vector2 position = P.Position + new Vector2(P.Width,0);
-            Projectile projectile = new Projectile();
-            projectile.Initialize(GraphicsDevice.Viewport, projectileTexture, position);
-            projectiles.Add(projectile);
+            Rectangle R1 = new Rectangle((int)P1.Position.X, (int)P1.Position.Y, P1.Width, P1.Height);
+            Rectangle R2 = new Rectangle((int)P2.Position.X, (int)P2.Position.Y, P2.Width, P2.Height);
+            return (R1.Intersects(R2));
+        }
+
+        private void AddProjectile()
+        {
+            if (PlayerNo < Players.Count)
+            {
+                Player P = Players[turn[currIterate % listPlayers.Count]];
+                int horizontal = P.horizontal;
+                int vertikal = P.vertikal;
+                Vector2 position = new Vector2();
+                if (horizontal == 0) //kanan
+                {
+                    switch (vertikal)
+                    {
+                        case 0: // bawah 2
+                            position = P.Position + new Vector2(60, 50);
+                            break;
+                        case 1: // bawah
+                            position = P.Position + new Vector2(55, 40);
+                            break;
+                        case 2: // atas
+                            position = P.Position + new Vector2(50, 30);
+                            break;
+                        default: // atas 2
+                            position = P.Position + new Vector2(48, 20);
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (vertikal)
+                    {
+                        case 0: // bawah 2
+                            position = P.Position + new Vector2(5, 50);
+                            break;
+                        case 1: // bawah
+                            position = P.Position + new Vector2(10, 40);
+                            break;
+                        case 2: // atas
+                            position = P.Position + new Vector2(15, 30);
+                            break;
+                        default: // atas 2
+                            position = P.Position + new Vector2(17, 20);
+                            break;
+                    }
+                }
+
+                Projectile projectile = new Projectile();
+                projectile.Initialize(GraphicsDevice.Viewport, projectileTexture, position, horizontal, vertikal, PlayerNo);
+                projectiles.Add(projectile);
+            }
         }
     }
 }

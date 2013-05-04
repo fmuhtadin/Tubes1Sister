@@ -112,7 +112,7 @@ namespace PeerModule
 
         private void PeerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            MessageBox.Show("Closing Socket...");
+            //MessageBox.Show("Closing Socket...");
             peer.ClosePeer();
         }
 
@@ -142,6 +142,20 @@ namespace PeerModule
         public void UpdateOtherPlayer(IPAddress ip, int state)
         {
             game.UpdateOtherPlayer(ip, state);
+        }
+
+        public void UpdateDeadPeer(IPAddress ip)
+        {
+            game.UpdateDeadPeer(ip);
+        }
+
+        public void UpdateTurnOrder(List<int> turn)
+        {
+            while (game == null)
+            {
+
+            }
+            game.UpdateTurnOrder(turn);
         }
 
         private void buttonJ_Click_1(object sender, EventArgs e)

@@ -21,6 +21,9 @@ namespace GameEngine
         // The amount of damage the projectile can inflict to an enemy
         public int Damage;
 
+        // Pemilik
+        public int Owner;
+
         // Represents the viewable boundary of the game
         Viewport viewport;
 
@@ -39,10 +42,10 @@ namespace GameEngine
         // Determines how fast the projectile moves
         float projectileMoveSpeed;
         float projectileMoveSpeedY;
-        int grafitasi;
+        float grafitasi;
+        float percepatangrafitasi;
 
-
-        public void Initialize(Viewport viewport, Texture2D texture, Vector2 position)
+        public void Initialize(Viewport viewport, Texture2D texture, Vector2 position, int horizontal, int vertikal, int Own)
         {
             Texture = texture;
             Position = position;
@@ -52,14 +55,41 @@ namespace GameEngine
 
             Damage = 2;
 
-            projectileMoveSpeed = 10f;
-            projectileMoveSpeedY = 10f;
+            Owner = Own;
+
+            if (horizontal == 0)//kanan
+            {
+                projectileMoveSpeed = 10f;
+            }
+            else // kiri
+            {
+                projectileMoveSpeed = -10f;
+            }
+
+            switch (vertikal)
+            {
+                case 0: // bawah 2
+                    projectileMoveSpeedY = 4f;
+                    percepatangrafitasi = 1f;
+                    break;
+                case 1: // bawah
+                    projectileMoveSpeedY = 8f;
+                    percepatangrafitasi = 0.55f;
+                    break;
+                case 2: // atas
+                    projectileMoveSpeedY = 8f;
+                    percepatangrafitasi = 0.34f;
+                    break;
+                default: // atas 2
+                    projectileMoveSpeedY = 10f;
+                    percepatangrafitasi = 0.29f;
+                    break;
+            }
             grafitasi = 0;
         }
         public void Update()
         {
-            grafitasi += 1;
-            // Projectiles always move to the right
+            grafitasi += percepatangrafitasi;
             Position.X += projectileMoveSpeed;
             Position.Y -= projectileMoveSpeedY - grafitasi;
 

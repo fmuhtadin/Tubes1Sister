@@ -9,6 +9,7 @@ namespace GunbondLibrary
     public interface IPeer
     {
         void SendPosition(int state);
+        void SendTurnOrder(List<int> turn);
         List<IPAddress> GetListTeam1();
         List<IPAddress> GetListTeam2();
         IPAddress GetSelfIP();

@@ -18,7 +18,7 @@ namespace PeerModule
         public ConnectionState(Socket clsock)
         {
             this.socket = clsock;
-            timeToLive = 10;
+            timeToLive = 5;
         }
     }
 
@@ -46,6 +46,7 @@ namespace PeerModule
         public List<IPAddress> listRoomPeers;
         public List<IPAddress> listTeam1Peers;
         public List<IPAddress> listTeam2Peers;
+        public int packetCounter;
 
         private PeerForm peerForm;
         private byte[] buffer = new byte[1024];
@@ -55,6 +56,9 @@ namespace PeerModule
         PeerOptions options;
         private int lastCommandCode;
         private int availablePort;
+        System.Threading.Timer timer;
+        int timerCycle;
+        int readyCount;
 
         public GunbondPeer(PeerForm newPeerForm)
         {
@@ -71,6 +75,9 @@ namespace PeerModule
             listTeam1Peers = new List<IPAddress>();
             listTeam2Peers = new List<IPAddress>();
             availablePort = 3055;
+            packetCounter = 0;
+            timerCycle = 0;
+            readyCount = 0;
         }
 
         public void InitSocket(String serverIPtext)
@@ -126,7 +133,7 @@ namespace PeerModule
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "GUNBOND ERROR 2",
+                MessageBox.Show(ex.ToString(), "GUNBOND ERROR 2",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -156,12 +163,26 @@ namespace PeerModule
                 }
                 else
                 {
-                    Thread.Sleep(100);
+                    //Thread.Sleep(100);
+                    Socket currSocket = (Socket)ar.AsyncState;
+                    currSocket.EndConnect(ar);
+
+                    lastCommandCode = 253;
+                    MessageData msgToSend = new MessageData();
+                    msgToSend.pstr = "GunbondGame";
+                    byte[] reserved = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                    msgToSend.reservedBytes = reserved;
+                    msgToSend.code = 253;
+                    msgToSend.peerId = localIP;
+                    msgToSend.roomId = peerForm.GetSelectedRoomId();
+                    byte[] message = msgToSend.ToByte();
+
+                    currSocket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), currSocket);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error Client Handshake", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.ToString(), "Error Client Handshake", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -175,7 +196,7 @@ namespace PeerModule
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "SGSclient", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.ToString(), "SGSclient", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -213,8 +234,32 @@ namespace PeerModule
                         }
                         break;
 
+                    case 181:
+                        //NotifyDead
+                        if (msgReceived.packetCounter > packetCounter)
+                        {
+                            msgToSend.code = 181;
+                            packetCounter++;
+                            msgToSend.peerId = msgReceived.peerId;
+                            msgToSend.packetCounter = msgReceived.packetCounter;
+                            message = msgToSend.ToByte();
+                            SendCube(message, (currSocket.RemoteEndPoint as IPEndPoint).Address);
+                            UpdateDeadPeer(msgReceived.peerId);
+                        }
+                        break;
+
                     case 182:
                         //Keep alive
+                        if (msgReceived.packetCounter > packetCounter)
+                        {
+                            msgToSend.code = 182;
+                            packetCounter++;
+                            msgToSend.peerId = msgReceived.peerId;
+                            msgToSend.packetCounter = msgReceived.packetCounter;
+                            message = msgToSend.ToByte();
+                            SendCube(message, (currSocket.RemoteEndPoint as IPEndPoint).Address);
+                            RenewAlivePeer((currSocket.RemoteEndPoint as IPEndPoint).Address);
+                        }
                         break;
 
                     case 255:
@@ -282,10 +327,10 @@ namespace PeerModule
                                     clSock.Bind(ipLocalEndPoint);
 
                                     //Connect to the server
-                                    clSock.BeginConnect(ipEndPoint, new AsyncCallback(OnConnect), null);
+                                    clSock.BeginConnect(ipEndPoint, new AsyncCallback(OnConnect), clSock);
 
                                     //Send the message to the server
-                                    clSock.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), clSock);
+                                    //clSock.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), clSock);
                                 }
                                 else
                                 {
@@ -394,6 +439,16 @@ namespace PeerModule
 
                     case 252:
                         //start
+                        if (packetCounter == 0)
+                        {
+                            msgToSend.code = 252;
+                            packetCounter++;
+                            msgToSend.peerId = msgReceived.peerId;
+                            msgToSend.roomId = msgReceived.roomId;
+                            message = msgToSend.ToByte();
+                            SendCube(message, (currSocket.RemoteEndPoint as IPEndPoint).Address);
+                            RunGame();
+                        }
                         break;
 
                     case 235:
@@ -452,6 +507,7 @@ namespace PeerModule
                         }
                         break;
                     case 110:
+                        //Command To Initiate Handshake
                         int number = GetSelfPositionNumber();
                         if (number > 10 && number < 20)
                         {
@@ -535,6 +591,7 @@ namespace PeerModule
                                         new AsyncCallback(OnSend), connectedCreatorPeer.socket);
                         break;
                     case 115:
+                        //Done handshaking
                         for (int i = 0; i < listPeerConnected.Count; i++)
                         {
                             if ((currSocket.RemoteEndPoint as IPEndPoint).Address.Equals((listPeerConnected[i].socket.RemoteEndPoint as IPEndPoint).Address))
@@ -551,6 +608,7 @@ namespace PeerModule
                         }
                         break;
                     case 117:
+                        //Superpeer disconnect becoming normal peer
                         for (int i = 0; i < listPeerConnected.Count; i++)
                         {
                             if ((connectedCreatorPeer.socket.RemoteEndPoint as IPEndPoint).Address.Equals((listPeerConnected[i].socket.RemoteEndPoint as IPEndPoint).Address))
@@ -562,19 +620,33 @@ namespace PeerModule
                             }
                         }
                         break;
-                    case 190:
-                        msgToSend.code = 190;
-                        message = msgToSend.ToByte();
-                        SendCube(message, (currSocket.RemoteEndPoint as IPEndPoint).Address);
-                        RunGame();
-                        break;
                     case 70:
-                        msgToSend.code = 70;
-                        msgToSend.peerId = msgReceived.peerId;
-                        msgToSend.state = msgReceived.state;
-                        message = msgToSend.ToByte();
-                        SendCube(message, (currSocket.RemoteEndPoint as IPEndPoint).Address);
-                        UpdateOtherPlayer(msgReceived.peerId,msgReceived.state);
+                        //Game State
+                        if (msgReceived.packetCounter > packetCounter)
+                        {
+                            msgToSend.code = 70;
+                            packetCounter++;
+                            msgToSend.peerId = msgReceived.peerId;
+                            msgToSend.state = msgReceived.state;
+                            msgToSend.packetCounter = msgReceived.packetCounter;
+                            message = msgToSend.ToByte();
+                            SendCube(message, (currSocket.RemoteEndPoint as IPEndPoint).Address);
+                            UpdateOtherPlayer(msgReceived.peerId, msgReceived.state);
+                        }
+                        break;
+                    case 130:
+                        //Turn Order
+                        if (msgReceived.packetCounter > packetCounter)
+                        {
+                            msgToSend.code = 130;
+                            packetCounter++;
+                            msgToSend.maxPlayerNum = msgReceived.maxPlayerNum;
+                            msgToSend.turn = msgReceived.turn;
+                            msgToSend.packetCounter = packetCounter;
+                            message = msgToSend.ToByte();
+                            SendCube(message, (currSocket.RemoteEndPoint as IPEndPoint).Address);
+                            UpdateTurnOrder(msgReceived.turn);
+                        }
                         break;
                 }
 
@@ -593,7 +665,7 @@ namespace PeerModule
             { }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "GUNBOND ERROR: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.ToString(), "GUNBOND ERROR: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -633,7 +705,7 @@ namespace PeerModule
 
         public void ClosePeer()
         {
-            sListener.Shutdown(SocketShutdown.Both);
+            //sListener.Shutdown(SocketShutdown.Both);
             sListener.Close();
         }
 
@@ -751,9 +823,6 @@ namespace PeerModule
                 switch (number % 10)
                 {
                     case 1:
-                        //HandshakePeer(listTeam1Peers[1]);
-                        //HandshakePeer(listTeam1Peers[2]);
-                        //HandshakePeer(listTeam2Peers[0]);
                         if (listTeam1Peers.Count > 3)
                             CloseConnection(listTeam1Peers[3]);
                         if (listTeam2Peers.Count > 1)
@@ -764,9 +833,6 @@ namespace PeerModule
                             CloseConnection(listTeam2Peers[3]);
                         break;
                     case 2:
-                        //HandshakePeer(listTeam1Peers[0]);
-                        //HandshakePeer(listTeam1Peers[3]);
-                        //HandshakePeer(listTeam2Peers[1]);
                         if (listTeam1Peers.Count > 2)
                             CloseConnection(listTeam1Peers[2]);
                         if (listTeam2Peers.Count > 0)
@@ -777,9 +843,6 @@ namespace PeerModule
                             CloseConnection(listTeam2Peers[3]);
                         break;
                     case 3:
-                        //HandshakePeer(listTeam1Peers[0]);
-                        //HandshakePeer(listTeam1Peers[3]);
-                        //HandshakePeer(listTeam2Peers[2]);
                         if (listTeam1Peers.Count > 1)
                             CloseConnection(listTeam1Peers[1]);
                         if (listTeam2Peers.Count > 0)
@@ -787,12 +850,9 @@ namespace PeerModule
                         if (listTeam2Peers.Count > 1)
                             CloseConnection(listTeam2Peers[1]);
                         if (listTeam2Peers.Count > 3)
-                        CloseConnection(listTeam2Peers[3]);
+                            CloseConnection(listTeam2Peers[3]);
                         break;
                     case 4:
-                        //HandshakePeer(listTeam1Peers[1]);
-                        //HandshakePeer(listTeam1Peers[2]);
-                        //HandshakePeer(listTeam2Peers[3]);
                         if (listTeam1Peers.Count > 0)
                             CloseConnection(listTeam1Peers[0]);
                         if (listTeam2Peers.Count > 0)
@@ -874,13 +934,17 @@ namespace PeerModule
 
         public void RunGame() 
         {
+            //timer = new System.Threading.Timer(TimerCallback, null, 12000, Timeout.Infinite);
             peerForm.StartGame();
         }
 
         public void InitRunGame()
         {
             MessageData msgToSend = new MessageData();
-            msgToSend.code = 190;
+            msgToSend.code = 252;
+            packetCounter++;
+            msgToSend.peerId = localIP;
+            msgToSend.roomId = roomIdHeld;
             byte[] message = msgToSend.ToByte();
             foreach (ConnectionState cs in listPeerConnected)
             {
@@ -963,8 +1027,10 @@ namespace PeerModule
         {
             MessageData msgToSend = new MessageData();
             msgToSend.code = 70;
+            packetCounter++;
             msgToSend.peerId = localIP;
             msgToSend.state = state;
+            msgToSend.packetCounter = packetCounter;
             byte[] message = msgToSend.ToByte();
             foreach (ConnectionState cs in listPeerConnected)
             {
@@ -990,6 +1056,97 @@ namespace PeerModule
         public IPAddress GetSelfIP()
         {
             return localIP;
+        }
+
+        public void SendTurnOrder(List<int> turn)
+        {
+            MessageData msgToSend = new MessageData();
+            msgToSend.code = 130;
+            packetCounter++;
+            msgToSend.maxPlayerNum = turn.Count;
+            msgToSend.turn = turn;
+            msgToSend.packetCounter = packetCounter;
+            byte[] message = msgToSend.ToByte();
+            foreach (ConnectionState cs in listPeerConnected)
+            {
+                cs.socket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), cs.socket);
+            }
+        }
+
+        private void UpdateTurnOrder(List<int> turn)
+        {
+            peerForm.UpdateTurnOrder(turn);
+        }
+
+        private void SendKeepAlive()
+        {
+            MessageData msgToSend = new MessageData();
+            msgToSend.code = 182;
+            packetCounter++;
+            msgToSend.peerId = localIP;
+            msgToSend.packetCounter = packetCounter;
+            byte[] message = msgToSend.ToByte();
+            foreach (ConnectionState cs in listPeerConnected)
+            {
+                cs.socket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), cs.socket);
+            }
+        }
+
+        private void RenewAlivePeer(IPAddress ip)
+        {
+            foreach (ConnectionState cs in listPeerConnected)
+            {
+                if ((cs.socket.RemoteEndPoint as IPEndPoint).Address.Equals(ip))
+                {
+                    cs.timeToLive = 5;
+                }
+            }
+        }
+
+        private void NotifyDead(IPAddress ip)
+        {
+            UpdateDeadPeer(ip);
+            MessageData msgToSend = new MessageData();
+            msgToSend.code = 181;
+            packetCounter++;
+            msgToSend.peerId = ip;
+            msgToSend.packetCounter = packetCounter;
+            byte[] message = msgToSend.ToByte();
+            foreach (ConnectionState cs in listPeerConnected)
+            {
+                cs.socket.BeginSend(message, 0, message.Length, SocketFlags.None, new AsyncCallback(OnSend), cs.socket);
+            }
+        }
+
+        private void UpdateDeadPeer(IPAddress ip)
+        {
+            for (int i = 0; i < listPeerConnected.Count; i++)
+            {
+                if ((listPeerConnected[i].socket.RemoteEndPoint as IPEndPoint).Address.Equals(ip))
+                {
+                    listPeerConnected.RemoveAt(i);
+                }
+            }
+            peerForm.UpdateDeadPeer(ip);
+        }
+
+        private void TimerCallback(Object state)
+        {
+            timerCycle++;
+            if (timerCycle == 5)
+            {
+                foreach (ConnectionState cs in listPeerConnected)
+                {
+                    cs.timeToLive--;
+                    if (cs.timeToLive == 0)
+                    {
+                        NotifyDead((cs.socket.RemoteEndPoint as IPEndPoint).Address);
+                    }
+                }
+                timerCycle = 0;
+            }
+            SendKeepAlive();
+            timer.Change(12000, Timeout.Infinite);
         }
 
     }
